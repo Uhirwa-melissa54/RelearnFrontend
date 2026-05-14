@@ -1,0 +1,6 @@
+/* Reuses the base styles from Sidebar.css, but allows specific teacher overrides if necessary */
+@import './Sidebar.css';
+
+.teacher-sidebar {
+  /* Specific styling for teacher sidebar if needed, otherwise rely on Sidebar.css */
+}

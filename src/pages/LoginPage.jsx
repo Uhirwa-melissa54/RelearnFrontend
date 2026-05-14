@@ -12,7 +12,11 @@ const LoginPage = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     if (email && password) {
-      navigate('/dashboard');
+      if (email.toLowerCase().includes('teacher')) {
+        navigate('/teacher-dashboard');
+      } else {
+        navigate('/dashboard');
+      }
     }
   };
 

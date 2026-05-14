@@ -1,0 +1,6 @@
+/* We can reuse the main dashboard-layout styles from StudentDashboard.css */
+@import './StudentDashboard.css';
+
+.teacher-dashboard-layout {
+  /* Specific overrides for teacher dashboard layout if needed */
+}
