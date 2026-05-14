@@ -1,0 +1,110 @@
+.upload-notes-view {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 800px;
+}
+
+.upload-header h1 {
+  font-size: 1.5rem;
+  color: #1A264A;
+  margin-bottom: 4px;
+}
+
+.upload-header p {
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.upload-form-card {
+  padding: 32px;
+}
+
+.form-select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: #1f2937;
+  outline: none;
+  background-color: white;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  appearance: auto;
+}
+
+.form-select:focus {
+  border-color: #1A264A;
+  box-shadow: 0 0 0 3px rgba(26, 38, 74, 0.1);
+}
+
+.upload-dropzone {
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+  background-color: #f8fafc;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.upload-dropzone:hover, .upload-dropzone.drag-over {
+  border-color: #1A264A;
+  background-color: #f1f5f9;
+}
+
+.upload-dropzone.has-file {
+  border-style: solid;
+  border-color: #16a34a;
+  background-color: #f0fdf4;
+}
+
+.file-input-hidden {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.dropzone-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  gap: 8px;
+  color: #4b5563;
+  position: relative;
+  z-index: 1;
+}
+
+.dropzone-content strong {
+  color: #1f2937;
+  font-size: 1rem;
+  margin-top: 8px;
+}
+
+.dropzone-content span {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.file-selected {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.file-selected span {
+  color: #16a34a;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.file-selected small {
+  color: #4b5563;
+  font-size: 0.85rem;
+}

@@ -1,0 +1,158 @@
+.submission-review-view {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.review-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.btn-back-text {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  color: #6b7280;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 8px;
+}
+
+.btn-back-text:hover {
+  color: #1A264A;
+}
+
+.header-title-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-title-row h1 {
+  font-size: 1.6rem;
+  color: #1A264A;
+  margin: 0;
+}
+
+.status-badge-small {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status-badge-small.graded {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.status-badge-small.active {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.review-header p {
+  color: #6b7280;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+.submission-content, .grading-panel {
+  padding: 24px;
+}
+
+.submission-content h2, .grading-panel h2 {
+  font-size: 1.2rem;
+  color: #1A264A;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.attached-file-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  margin-bottom: 24px;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.file-info h4 {
+  font-size: 1.05rem;
+  color: #1f2937;
+  margin-bottom: 4px;
+}
+
+.file-info p {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.text-submission-box h3 {
+  font-size: 1rem;
+  color: #4b5563;
+  margin-bottom: 12px;
+}
+
+.text-content {
+  padding: 20px;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  font-size: 0.95rem;
+  color: #1f2937;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.score-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.score-input-wrapper input {
+  width: 100px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.max-score {
+  font-size: 1.1rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.w-full {
+  width: 100%;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+/* Reusing .btn-secondary, .btn-primary, .form-group, etc. from global scope */

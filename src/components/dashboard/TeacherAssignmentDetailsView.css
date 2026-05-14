@@ -1,0 +1,147 @@
+.assignment-details-view {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.assignment-details-header h1 {
+  font-size: 1.5rem;
+  color: #1A264A;
+  margin-bottom: 4px;
+}
+
+.assignment-details-header p {
+  color: #6b7280;
+  font-size: 1rem;
+}
+
+/* Stats grid uses same classes as TeacherClassView, but slightly tweaked for 4 cols */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.submissions-section {
+  padding: 24px;
+}
+
+.submissions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.submission-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background-color: white;
+  transition: all 0.2s;
+}
+
+.submission-list-item:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.sub-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.student-avatar-small {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f3f4f6;
+  color: #1A264A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.sub-info h4 {
+  font-size: 1.05rem;
+  color: #1f2937;
+  margin-bottom: 4px;
+}
+
+.sub-info p {
+  font-size: 0.85rem;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.missing-text {
+  color: #ef4444 !important;
+}
+
+.late-badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #f97316;
+  font-weight: 500;
+}
+
+.sub-right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.sub-status-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.status-text {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.status-text.missing {
+  color: #ef4444;
+  font-weight: 500;
+}
+
+.grade-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.sub-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-btn:hover {
+  background-color: #f3f4f6;
+  color: #1A264A;
+}

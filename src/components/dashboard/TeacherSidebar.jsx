@@ -26,7 +26,15 @@ const TeacherSidebar = ({ currentView, onNavigate }) => {
           <span>Dashboard</span>
         </button>
         <button 
-          className={`nav-item ${currentView === 'class' ? 'active' : ''}`}
+          className={`nav-item ${currentView === 'assignments' || currentView === 'assignment-details' || currentView === 'review-submission' ? 'active' : ''}`}
+          onClick={() => onNavigate('assignments')}
+        >
+          <FileText size={20} />
+          <span>Assignments</span>
+        </button>
+        <button 
+          className={`nav-item ${currentView === 'all-classes' || currentView === 'class' ? 'active' : ''}`}
+          onClick={() => onNavigate('all-classes')}
         >
           <BookOpen size={20} />
           <span>My Classes</span>
@@ -34,7 +42,10 @@ const TeacherSidebar = ({ currentView, onNavigate }) => {
       </nav>
 
       <div className="sidebar-footer">
-        <div className="user-profile-card">
+        <div 
+          className="user-profile-card"
+          onClick={() => onNavigate('profile')}
+        >
           <div className="avatar">
             T
           </div>
