@@ -15,13 +15,29 @@ const AssignmentSubmit = ({ data, onNavigate }) => {
 
       <div className="instructions-card card-box">
         <h3>Assignment Instructions</h3>
-        <p>Complete all problems from Chapter 3. Show all work and explain your reasoning for each solution. Submit as a single PDF file.</p>
+        <p>{assignment.description || 'Complete all problems from Chapter 3. Show all work and explain your reasoning for each solution. Submit as a single PDF file.'}</p>
       </div>
 
-      <div className="submit-card card-box">
-        <h3>Your Submission</h3>
-        
-        <div className="submission-tabs">
+      {assignment.readOnly ? (
+        <div className="submit-card card-box read-only-notice">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#ef4444' }}>
+            <h3>Read Only Access</h3>
+          </div>
+          <p style={{ color: '#4b5563', lineHeight: '1.6' }}>
+            You are viewing this assignment in read-only mode because it belongs to a past academic year or a different class. Submission features are disabled.
+          </p>
+          <div className="submit-actions" style={{ marginTop: '24px' }}>
+            <button className="btn-cancel" onClick={() => onNavigate('overview')}>Go Back</button>
+            <button className="btn-submit" onClick={() => alert('Downloading assignment files...')}>
+              Download Assignment Files
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div className="submit-card card-box">
+          <h3>Your Submission</h3>
+          
+          <div className="submission-tabs">
           <button className="tab-btn active">File Upload</button>
           <button className="tab-btn">Text Submission</button>
         </div>
@@ -48,6 +64,7 @@ const AssignmentSubmit = ({ data, onNavigate }) => {
           </button>
         </div>
       </div>
+      )}
     </div>
   );
 };

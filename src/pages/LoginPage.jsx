@@ -25,7 +25,7 @@ const LoginPage = () => {
           <h1 className="marketing-title">
             RELEARN!
           </h1>
-          <p className="marketing-text">
+          <p className="marketing-text"> 
             A centralized, structured, and hassle-free<br />
             platform for students and teachers to manage<br />
             notes and assignments easily. Your academic<br />

@@ -30,26 +30,35 @@ const StudentProfile = () => {
       <div className="profile-grid">
         <div className="profile-info-card card-box">
           <div className="profile-avatar-large">
-            S
+            U
           </div>
-          <h2>Student User</h2>
+          <h2>Uhirwa Melissa</h2>
           <p className="role-badge">Student</p>
           
           <div className="info-list">
             <div className="info-item">
               <Mail size={18} color="#6b7280" />
-              <span>user@relearn.edu</span>
+              <span>uhirwamelissa@relearn.edu</span>
             </div>
             <div className="info-item">
               <User size={18} color="#6b7280" />
-              <span>Student ID: RL-2026-045</span>
+              <span>Username: uhirwamelissa</span>
+            </div>
+            <div className="info-item" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', color: '#4b5563', fontSize: '0.95rem', padding: '12px', backgroundColor: '#f9fafb', borderRadius: '8px' }}>
+              <strong>Class:</strong> Y2A Mathematics
+            </div>
+            <div className="info-item" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', color: '#4b5563', fontSize: '0.95rem', padding: '12px', backgroundColor: '#f9fafb', borderRadius: '8px' }}>
+              <strong>Academic Year:</strong> 2026
+            </div>
+            <div className="info-item" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', color: '#4b5563', fontSize: '0.95rem', padding: '12px', backgroundColor: '#f9fafb', borderRadius: '8px' }}>
+              <strong>Joined:</strong> September 1, 2024
             </div>
           </div>
         </div>
 
         <div className="security-card card-box">
           <div className="section-title">
-            <Shield size={24} color="#3b82f6" />
+            <Shield size={24} color="#1A264A" />
             <h2>Security Settings</h2>
           </div>
           

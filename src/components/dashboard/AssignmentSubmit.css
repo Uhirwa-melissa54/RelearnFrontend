@@ -59,13 +59,13 @@
 }
 
 .tab-btn.active {
-  background-color: #3b82f6;
+  background-color: #1A264A;
   color: white;
   box-shadow: 0 4px 10px rgba(59, 130, 246, 0.2);
 }
 
 .upload-dropzone {
-  border: 2px dashed #93c5fd;
+  border: 2px dashed #cbd5e1;
   border-radius: 8px;
   padding: 60px 20px;
   display: flex;
@@ -80,7 +80,7 @@
 
 .upload-dropzone:hover {
   background-color: #f8fafc;
-  border-color: #3b82f6;
+  border-color: #1A264A;
 }
 
 .upload-dropzone p {
@@ -112,7 +112,7 @@
 
 .comments-section textarea:focus {
   outline: none;
-  border-color: #3b82f6;
+  border-color: #1A264A;
   background-color: #ffffff;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
@@ -148,7 +148,7 @@
   justify-content: center;
   gap: 8px;
   padding: 12px 24px;
-  background: #93c5fd;
+  background: #cbd5e1;
   border: none;
   border-radius: 8px;
   color: white;
@@ -159,5 +159,5 @@
 }
 
 .btn-submit:hover {
-  background: #3b82f6;
+  background: #1A264A;
 }

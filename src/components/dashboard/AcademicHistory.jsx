@@ -6,7 +6,7 @@ const AcademicHistory = ({ onNavigate }) => {
   const [selectedYear, setSelectedYear] = useState('2026-Y2A');
 
   const stats = [
-    { label: 'Courses Completed', value: '3', icon: <BookOpen size={24} color="#3b82f6" />, bgColor: '#eff6ff', id: 'courses' },
+    { label: 'Courses Completed', value: '3', icon: <BookOpen size={24} color="#1A264A" />, bgColor: 'var(--secondary-color)', id: 'courses' },
     { label: 'Total Notes', value: '62', icon: <FileText size={24} color="#22c55e" />, bgColor: '#f0fdf4', id: 'notes', clickable: true },
     { label: 'Assignments Done', value: '45', icon: <TrendingUp size={24} color="#a855f7" />, bgColor: '#faf5ff', id: 'assignments', clickable: true },
     { label: 'Achievements', value: '2', icon: <Award size={24} color="#f97316" />, bgColor: '#fff7ed', id: 'achievements' },
@@ -29,7 +29,7 @@ const AcademicHistory = ({ onNavigate }) => {
 
       <div className="year-selector-card card-box">
         <div className="selector-wrapper">
-          <Calendar size={20} color="#3b82f6" />
+          <Calendar size={20} color="#1A264A" />
           <label htmlFor="year-select">Select Academic Year:</label>
           <select 
             id="year-select"
@@ -62,7 +62,7 @@ const AcademicHistory = ({ onNavigate }) => {
 
       <div className="achievements-section card-box">
         <div className="section-title">
-          <Award size={20} color="#3b82f6" />
+          <Award size={20} color="#1A264A" />
           <h3>Achievements</h3>
         </div>
         <div className="badges-container">

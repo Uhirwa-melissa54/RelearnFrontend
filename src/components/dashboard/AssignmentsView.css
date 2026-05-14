@@ -1,0 +1,207 @@
+.assignments-view {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.assignments-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-title-group h1 {
+  font-size: 1.5rem;
+  color: #1A264A;
+  margin-bottom: 4px;
+}
+
+.header-title-group p {
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.btn-refresh {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  padding: 8px 16px;
+  border-radius: 8px;
+  color: #4b5563;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-refresh:hover {
+  background-color: #f3f4f6;
+}
+
+.filters-bar {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  border-top: none; /* Removing the thick top border for filters */
+  align-items: center;
+}
+
+.search-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #e5e7eb;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.search-wrapper input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: #1f2937;
+}
+
+.filter-select {
+  padding: 10px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  color: #4b5563;
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.assignments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.assignment-list-card {
+  padding: 24px;
+  border-top: none; /* Removing thick top border for list items */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.card-title h3 {
+  font-size: 1.1rem;
+  color: #1A264A;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-title span {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+.assignment-desc {
+  color: #6b7280;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.card-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.course-badge {
+  background-color: #f3f4f6;
+  color: #4b5563;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.priority-badge {
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.priority-critical, .priority-high {
+  background-color: #fef2f2;
+  color: #ef4444;
+}
+
+.priority-medium {
+  background-color: #fffbeb;
+  color: #f59e0b;
+}
+
+.teacher-info {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.card-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.deadline-text {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #6b7280;
+  letter-spacing: 0.5px;
+}
+
+.btn-action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  padding: 8px 16px;
+  border-radius: 8px;
+  color: #1A264A;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-action:hover {
+  background-color: #f9fafb;
+  border-color: #d1d5db;
+}
+
+.status-badge.status-pending {
+  background-color: #fffbeb;
+  color: #f59e0b;
+}
+
+.status-badge.status-resolved {
+  background-color: #f0fdf4;
+  color: #22c55e;
+}
+
+.status-badge.status-overdue {
+  background-color: #fef2f2;
+  color: #ef4444;
+}

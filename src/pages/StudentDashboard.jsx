@@ -7,6 +7,8 @@ import DocumentView from '../components/dashboard/DocumentView';
 import AcademicHistory from '../components/dashboard/AcademicHistory';
 import HistoricalContent from '../components/dashboard/HistoricalContent';
 import StudentProfile from '../components/dashboard/StudentProfile';
+import AssignmentsView from '../components/dashboard/AssignmentsView';
+import AllClassesView from '../components/dashboard/AllClassesView';
 import './StudentDashboard.css';
 
 const StudentDashboard = () => {
@@ -14,6 +16,7 @@ const StudentDashboard = () => {
   const [selectedData, setSelectedData] = useState({
     assignment: null,
     document: null,
+    class: null,
   });
 
   const handleNavigate = (view) => {
@@ -33,7 +36,11 @@ const StudentDashboard = () => {
       case 'overview':
         return <DashboardOverview onNavigate={handleNavigate} onSelectData={handleSelectData} />;
       case 'class':
-        return <ClassView onNavigate={handleNavigate} onSelectData={handleSelectData} />;
+        return <ClassView onNavigate={handleNavigate} onSelectData={handleSelectData} data={selectedData.class} />;
+      case 'assignments':
+        return <AssignmentsView onNavigate={handleNavigate} onSelectData={handleSelectData} />;
+      case 'all-classes':
+        return <AllClassesView onNavigate={handleNavigate} onSelectData={handleSelectData} />;
       case 'assignment':
         return <AssignmentSubmit onNavigate={handleNavigate} data={selectedData.assignment} />;
       case 'document':

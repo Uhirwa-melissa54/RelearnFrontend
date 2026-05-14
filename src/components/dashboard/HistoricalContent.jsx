@@ -50,18 +50,25 @@ const HistoricalContent = ({ type, onNavigate, onSelectData }) => {
               {group.items.map(item => (
                 <div key={item.id} className="historical-item" onClick={() => handleItemClick(item)}>
                   <div className="item-main">
-                    <FileText size={20} color="#3b82f6" />
+                    <FileText size={20} color="#1A264A" />
                     <div className="item-details">
                       <h4>{item.title}</h4>
                       <p>{item.date} • {item.size}</p>
                     </div>
                   </div>
-                  <button className="download-btn" onClick={(e) => {
-                    e.stopPropagation();
-                    alert(`Downloading ${item.title}`);
-                  }}>
-                    <Download size={18} />
-                  </button>
+                  <div className="item-actions" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                    {!isNotes && (
+                      <span className="status-badge" style={{ backgroundColor: '#f0fdf4', color: '#22c55e', padding: '4px 12px', borderRadius: '16px', fontSize: '0.8rem', fontWeight: 600 }}>
+                        COMPLETED
+                      </span>
+                    )}
+                    <button className="download-btn" onClick={(e) => {
+                      e.stopPropagation();
+                      alert(`Downloading ${item.title}`);
+                    }}>
+                      <Download size={18} />
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>

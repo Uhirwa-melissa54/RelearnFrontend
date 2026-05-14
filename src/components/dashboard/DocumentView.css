@@ -102,13 +102,13 @@
 }
 
 .btn-download {
-  background: #3b82f6;
+  background: #1A264A;
   border: none;
   color: white;
 }
 
 .btn-download:hover {
-  background: #2563eb;
+  background: #121b36;
 }
 
 .document-preview-card {
@@ -152,7 +152,7 @@
 }
 
 .related-note-item:hover {
-  border-color: #3b82f6;
+  border-color: #1A264A;
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.08);
 }
 

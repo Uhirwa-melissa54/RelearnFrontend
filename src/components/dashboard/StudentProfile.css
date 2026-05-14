@@ -32,7 +32,7 @@
 .profile-avatar-large {
   width: 96px;
   height: 96px;
-  background-color: #3b82f6;
+  background-color: #1A264A;
   color: white;
   border-radius: 50%;
   display: flex;
@@ -51,8 +51,8 @@
 }
 
 .role-badge {
-  background-color: #eff6ff;
-  color: #3b82f6;
+  background-color: var(--secondary-color);
+  color: #1A264A;
   padding: 4px 12px;
   border-radius: 16px;
   font-size: 0.85rem;
@@ -130,7 +130,7 @@
 
 .form-group input:focus {
   outline: none;
-  border-color: #3b82f6;
+  border-color: #1A264A;
   background-color: #ffffff;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
@@ -141,7 +141,7 @@
   justify-content: center;
   gap: 8px;
   padding: 12px 24px;
-  background-color: #3b82f6;
+  background-color: #1A264A;
   color: white;
   border: none;
   border-radius: 8px;
@@ -153,5 +153,5 @@
 }
 
 .btn-save:hover {
-  background-color: #2563eb;
+  background-color: #121b36;
 }

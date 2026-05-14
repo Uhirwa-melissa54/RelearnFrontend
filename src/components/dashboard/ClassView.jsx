@@ -2,7 +2,11 @@ import React from 'react';
 import { BookOpen, FileText, Calendar } from 'lucide-react';
 import './ClassView.css';
 
-const ClassView = ({ onSelectData, onNavigate }) => {
+const ClassView = ({ onSelectData, onNavigate, data }) => {
+  const readOnly = data?.readOnly || false;
+  const className = data?.id || 'Y2A';
+  const classDesc = data?.name || 'Year 2';
+
   const subjects = [
     {
       id: 1,
@@ -35,15 +39,22 @@ const ClassView = ({ onSelectData, onNavigate }) => {
   };
 
   const handleAssignmentClick = (assignment) => {
-    onSelectData('assignment', assignment);
+    onSelectData('assignment', { ...assignment, readOnly });
     onNavigate('assignment');
   };
 
   return (
     <div className="class-view">
-      <header className="class-header">
-        <h1>Class Y2A</h1>
-        <p>Year 2 • 45 Students</p>
+      <header className="class-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+        <div>
+          <h1>Class {className}</h1>
+          <p>{classDesc} • 45 Students</p>
+        </div>
+        {readOnly && (
+          <div className="read-only-badge" style={{ backgroundColor: '#fef2f2', color: '#ef4444', padding: '6px 16px', borderRadius: '20px', fontSize: '0.9rem', fontWeight: 600, border: '1px solid #fca5a5' }}>
+            Read-Only Access
+          </div>
+        )}
       </header>
 
       <div className="subjects-container">
@@ -51,7 +62,7 @@ const ClassView = ({ onSelectData, onNavigate }) => {
           <div key={subject.id} className="subject-block card-box">
             <div className="subject-header">
               <div className="subject-title-row">
-                <BookOpen size={24} color="#3b82f6" />
+                <BookOpen size={24} color="#1A264A" />
                 <h2>{subject.name}</h2>
               </div>
               <p className="subject-teacher">{subject.teacher}</p>

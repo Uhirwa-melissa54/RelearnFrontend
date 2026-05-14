@@ -98,7 +98,7 @@
 .btn-link {
   background: transparent;
   border: none;
-  color: #3b82f6;
+  color: #1A264A;
   font-size: 0.9rem;
   cursor: pointer;
 }
@@ -207,7 +207,7 @@
 }
 
 .note-icon {
-  background: #eff6ff;
+  background: var(--secondary-color);
   padding: 8px;
   border-radius: 8px;
   width: 36px;

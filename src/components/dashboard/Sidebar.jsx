@@ -26,11 +26,18 @@ const Sidebar = ({ currentView, onNavigate }) => {
           <span>Dashboard</span>
         </button>
         <button 
-          className={`nav-item ${currentView === 'assignment' ? 'active' : ''}`}
-          onClick={() => onNavigate('overview')} // For prototype, clicking assignments can just go to overview or a specific assignment list if we had one. Let's just keep it active if currentView is assignment
+          className={`nav-item ${currentView === 'assignments' ? 'active' : ''}`}
+          onClick={() => onNavigate('assignments')}
         >
           <FileText size={20} />
           <span>Assignments</span>
+        </button>
+        <button 
+          className={`nav-item ${currentView === 'all-classes' ? 'active' : ''}`}
+          onClick={() => onNavigate('all-classes')}
+        >
+          <BookOpen size={20} />
+          <span>All Classes</span>
         </button>
         <button 
           className={`nav-item ${currentView === 'history' ? 'active' : ''}`}
@@ -47,11 +54,11 @@ const Sidebar = ({ currentView, onNavigate }) => {
           onClick={() => onNavigate('profile')}
         >
           <div className="avatar">
-            S
+            U
           </div>
           <div className="user-info">
-            <span className="user-name">Student User</span>
-            <span className="user-email">user@relearn.edu</span>
+            <span className="user-name">Uhirwa Melissa</span>
+            <span className="user-email">uhirwamelissa@relearn.edu</span>
           </div>
         </div>
         <button className="logout-btn">

@@ -44,7 +44,7 @@
 }
 
 .selector-wrapper select:focus {
-  border-color: #3b82f6;
+  border-color: #1A264A;
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
 }
 
@@ -125,6 +125,6 @@
 }
 
 .badge.primary {
-  background-color: #3b82f6;
+  background-color: #1A264A;
   color: white;
 }

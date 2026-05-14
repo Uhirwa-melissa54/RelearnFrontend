@@ -78,7 +78,7 @@
 
 .historical-item:hover {
   background-color: #ffffff;
-  border-color: #3b82f6;
+  border-color: #1A264A;
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.08);
 }
 
@@ -114,7 +114,7 @@
 }
 
 .download-btn:hover {
-  background: #3b82f6;
+  background: #1A264A;
   color: white;
-  border-color: #3b82f6;
+  border-color: #1A264A;
 }

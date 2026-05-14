@@ -4,7 +4,7 @@ import './DashboardOverview.css';
 
 const DashboardOverview = ({ onNavigate, onSelectData }) => {
   const stats = [
-    { label: 'Active Courses', value: '3', icon: <BookOpen size={20} color="#3b82f6" />, bgColor: '#eff6ff' },
+    { label: 'Active Courses', value: '3', icon: <BookOpen size={20} color="#1A264A" />, bgColor: 'var(--secondary-color)' },
     { label: 'Pending Assignments', value: '2', icon: <Clock size={20} color="#f97316" />, bgColor: '#fff7ed' },
     { label: 'Completed Assignments', value: '15', icon: <CheckCircle size={20} color="#22c55e" />, bgColor: '#f0fdf4' },
     { label: 'Overdue', value: '1', icon: <AlertCircle size={20} color="#ef4444" />, bgColor: '#fef2f2' },
@@ -69,7 +69,7 @@ const DashboardOverview = ({ onNavigate, onSelectData }) => {
         <div className="subjects-grid">
           {subjects.map(subject => (
             <div key={subject.id} className="subject-card">
-              <BookOpen size={20} color="#3b82f6" />
+              <BookOpen size={20} color="#1A264A" />
               <h3>{subject.name}</h3>
               <p className="teacher">{subject.teacher}</p>
               <p className="notes-count">{subject.notes}</p>
@@ -106,7 +106,7 @@ const DashboardOverview = ({ onNavigate, onSelectData }) => {
           <div className="list-container">
             {recentNotes.map(note => (
               <div key={note.id} className="list-item note-list-item">
-                <FileText size={18} color="#3b82f6" className="note-icon" />
+                <FileText size={18} color="#1A264A" className="note-icon" />
                 <div className="list-item-main">
                   <h4>{note.title}</h4>
                   <p>{note.course} • {note.date}</p>
