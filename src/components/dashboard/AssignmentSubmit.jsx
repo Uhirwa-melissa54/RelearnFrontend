@@ -10,24 +10,33 @@ const AssignmentSubmit = ({ data, onNavigate }) => {
     <div className="assignment-submit">
       <header className="assignment-header">
         <h1>{assignment.title}</h1>
-        <p>{assignment.course} • Due: {assignment.due}</p>
+        <p>{assignment.course} • Due {assignment.due} • 100 points</p>
       </header>
 
+      <div className="instructions-card card-box">
+        <h3>Assignment Instructions</h3>
+        <p>Complete all problems from Chapter 3. Show all work and explain your reasoning for each solution. Submit as a single PDF file.</p>
+      </div>
+
       <div className="submit-card card-box">
-        <div className="upload-section">
-          <h3>Upload Files</h3>
-          <div className="upload-dropzone">
-            <UploadCloud size={32} color="#9ca3af" />
-            <p>Drag and drop files here, or click to browse</p>
-            <span className="upload-hint">Supported formats: PDF, DOCX, JPG (Max 10MB)</span>
-          </div>
+        <h3>Your Submission</h3>
+        
+        <div className="submission-tabs">
+          <button className="tab-btn active">File Upload</button>
+          <button className="tab-btn">Text Submission</button>
+        </div>
+
+        <div className="upload-dropzone">
+          <UploadCloud size={40} color="#6b7280" />
+          <p><strong>Click to upload or drag and drop</strong></p>
+          <span className="upload-hint">Allowed: PDF, DOC, DOCX (Max 25MB)</span>
         </div>
 
         <div className="comments-section">
           <h3>Additional Comments (Optional)</h3>
           <textarea 
             placeholder="Any additional notes for your teacher..."
-            rows={5}
+            rows={4}
           ></textarea>
         </div>
 

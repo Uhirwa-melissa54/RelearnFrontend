@@ -80,18 +80,21 @@
 }
 
 .detail-item {
-  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  border: none;
   border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
   padding: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  transition: border-color 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .detail-item:hover {
-  border-color: #d1d5db;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
 }
 
 .detail-item h4 {

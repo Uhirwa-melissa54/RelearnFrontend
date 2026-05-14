@@ -7,7 +7,7 @@
 .assignment-header h1 {
   font-size: 1.5rem;
   color: #1A264A;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 .assignment-header p {
@@ -15,61 +15,106 @@
   font-size: 0.95rem;
 }
 
+.instructions-card h3, .submit-card h3 {
+  font-size: 1.1rem;
+  color: #1A264A;
+  margin-bottom: 16px;
+}
+
+.instructions-card p {
+  color: #4b5563;
+  line-height: 1.6;
+}
+
 .submit-card {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 24px;
 }
 
-.upload-section h3, .comments-section h3 {
+.submission-tabs {
+  display: flex;
+  gap: 16px;
+  background-color: #f9fafb;
+  padding: 8px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: #4b5563;
+  font-weight: 500;
   font-size: 0.95rem;
-  color: #1A264A;
-  font-weight: 600;
-  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab-btn:not(.active):hover {
+  background-color: #f3f4f6;
+}
+
+.tab-btn.active {
+  background-color: #3b82f6;
+  color: white;
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.2);
 }
 
 .upload-dropzone {
-  border: 2px dashed #d1d5db;
+  border: 2px dashed #93c5fd;
   border-radius: 8px;
-  padding: 40px;
+  padding: 60px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  background-color: #f9fafb;
+  gap: 12px;
+  background-color: #ffffff;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 
 .upload-dropzone:hover {
-  background-color: #f3f4f6;
+  background-color: #f8fafc;
+  border-color: #3b82f6;
 }
 
 .upload-dropzone p {
-  color: #4b5563;
-  font-weight: 500;
+  color: #1A264A;
+  font-size: 1.05rem;
+  margin-bottom: 0;
 }
 
 .upload-hint {
-  font-size: 0.8rem;
-  color: #9ca3af;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.comments-section h3 {
+  font-size: 0.95rem;
+  margin-bottom: 12px;
 }
 
 .comments-section textarea {
   width: 100%;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
-  padding: 12px;
+  padding: 16px;
   font-family: inherit;
   font-size: 0.95rem;
   resize: vertical;
+  background-color: #f9fafb;
 }
 
 .comments-section textarea:focus {
   outline: none;
   border-color: #3b82f6;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .submit-actions {
@@ -80,13 +125,14 @@
 }
 
 .btn-cancel {
-  padding: 10px 24px;
+  flex: 1;
+  padding: 12px 24px;
   background: white;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   color: #4b5563;
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   transition: background-color 0.2s;
 }
@@ -96,20 +142,22 @@
 }
 
 .btn-submit {
+  flex: 1;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 10px 24px;
-  background: #3b82f6;
+  padding: 12px 24px;
+  background: #93c5fd;
   border: none;
   border-radius: 8px;
   color: white;
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
 .btn-submit:hover {
-  background: #2563eb;
+  background: #3b82f6;
 }

@@ -122,7 +122,7 @@ const DashboardOverview = ({ onNavigate, onSelectData }) => {
           <h2>Academic History</h2>
           <p>View your complete academic journey across all years</p>
         </div>
-        <button className="btn-primary">View History</button>
+        <button className="btn-primary" onClick={() => onNavigate('history')}>View History</button>
       </section>
     </div>
   );

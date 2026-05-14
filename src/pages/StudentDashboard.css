@@ -1,14 +1,14 @@
 .dashboard-layout {
   display: flex;
   min-height: 100vh;
-  background-color: #f9fafb; /* App offset background */
+  background: transparent;
 }
 
 .dashboard-main {
   flex: 1;
   margin-left: 260px; /* Width of the sidebar */
   padding: 32px 40px;
-  background-color: #f9fafb;
+  background: transparent;
 }
 
 /* Base styles for scrollbars if needed */

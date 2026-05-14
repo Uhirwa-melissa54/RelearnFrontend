@@ -64,6 +64,24 @@ const DocumentView = ({ data }) => {
           {/* A placeholder for the actual PDF/Document viewer */}
         </div>
       </div>
+
+      <div className="related-notes-card card-box">
+        <h3>Related Notes from {doc.subject}</h3>
+        <div className="related-notes-list">
+          <div className="related-note-item">
+            <h4>Limits and Continuity</h4>
+            <p>May 3, 2026</p>
+          </div>
+          <div className="related-note-item">
+            <h4>Derivatives - Part 1</h4>
+            <p>May 5, 2026</p>
+          </div>
+          <div className="related-note-item">
+            <h4>Derivatives - Part 2</h4>
+            <p>May 8, 2026</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

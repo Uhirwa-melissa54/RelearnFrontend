@@ -34,7 +34,7 @@ const Sidebar = ({ currentView, onNavigate }) => {
         </button>
         <button 
           className={`nav-item ${currentView === 'history' ? 'active' : ''}`}
-          onClick={() => onNavigate('overview')}
+          onClick={() => onNavigate('history')}
         >
           <History size={20} />
           <span>Academic History</span>
@@ -42,7 +42,10 @@ const Sidebar = ({ currentView, onNavigate }) => {
       </nav>
 
       <div className="sidebar-footer">
-        <div className="user-profile-card">
+        <div 
+          className="user-profile-card" 
+          onClick={() => onNavigate('profile')}
+        >
           <div className="avatar">
             S
           </div>

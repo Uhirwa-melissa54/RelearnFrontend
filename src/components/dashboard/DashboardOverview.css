@@ -23,8 +23,10 @@
 
 .stat-card {
   background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
+  border: none;
+  border-top: 4px solid var(--primary-color);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -58,12 +60,7 @@
   margin-top: 4px;
 }
 
-.card-box {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 24px;
-}
+/* .card-box is now in index.css */
 
 .section-header-row {
   display: flex;
@@ -117,8 +114,10 @@
 }
 
 .subject-card {
-  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  border: none;
   border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -155,18 +154,21 @@
 }
 
 .list-item {
-  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  border: none;
   border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
   padding: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  transition: border-color 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .list-item:hover {
-  border-color: #d1d5db;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
 }
 
 .list-item-main h4 {
@@ -216,8 +218,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f0fdf4;
-  border-color: #bbf7d0;
+  background-color: var(--secondary-color);
+  border-top: 6px solid var(--primary-color);
 }
 
 .history-text h2 {
@@ -232,7 +234,7 @@
 }
 
 .btn-primary {
-  background-color: #3b82f6;
+  background-color: var(--primary-color);
   color: white;
   border: none;
   padding: 10px 20px;
@@ -243,5 +245,5 @@
 }
 
 .btn-primary:hover {
-  background-color: #2563eb;
+  background-color: #121b36;
 }
