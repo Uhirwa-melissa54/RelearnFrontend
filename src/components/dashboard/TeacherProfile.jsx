@@ -1,119 +1,142 @@
-import React, { useState } from 'react';
-import { Mail, User, BookOpen, Calendar, Lock } from 'lucide-react';
-// We can reuse StudentProfile.css since the layout is identical
-import './StudentProfile.css';
+import React, { useState, useEffect } from 'react';
+import { User, Mail, Shield, Save, LogOut } from 'lucide-react';
+import { teacherApi, getUser, performLogout } from '../../api';
+import { useNavigate } from 'react-router-dom';
 
 const TeacherProfile = ({ onNavigate }) => {
-  const [passwords, setPasswords] = useState({
-    current: '',
-    new: '',
-    confirm: ''
-  });
+  const [profile, setProfile]           = useState(null);
+  const [loading, setLoading]           = useState(true);
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword]   = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [pwError, setPwError]           = useState('');
+  const [pwSuccess, setPwSuccess]       = useState(false);
+  const [saving, setSaving]             = useState(false);
+  const navigate = useNavigate();
+  const user = getUser();
 
-  const handleChange = (e) => {
-    setPasswords({ ...passwords, [e.target.name]: e.target.value });
-  };
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const data = await teacherApi.getProfile();
+        setProfile(data);
+      } catch (err) {
+        console.error('Failed to load profile:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    load();
+  }, []);
 
-  const handlePasswordSubmit = (e) => {
+  const handlePasswordChange = async (e) => {
     e.preventDefault();
-    if (passwords.new !== passwords.confirm) {
-      alert("New passwords don't match!");
-      return;
+    setPwError('');
+    if (newPassword !== confirmPassword) { setPwError("New passwords don't match!"); return; }
+    if (newPassword.length < 6)          { setPwError('Password must be at least 6 characters.'); return; }
+
+    setSaving(true);
+    try {
+      await teacherApi.changePassword({ currentPassword, newPassword });
+      setPwSuccess(true);
+      setCurrentPassword(''); setNewPassword(''); setConfirmPassword('');
+      setTimeout(() => setPwSuccess(false), 3000);
+    } catch (err) {
+      setPwError(err.message || 'Failed to change password.');
+    } finally {
+      setSaving(false);
     }
-    alert('Password updated successfully!');
-    setPasswords({ current: '', new: '', confirm: '' });
   };
 
-  const handleLogout = () => {
-    // Implement actual logout logic
-    alert('Logging out...');
-    window.location.href = '/login';
+  const handleLogout = async () => {
+    await performLogout();
+    navigate('/login');
   };
+
+  if (loading) return (
+    <div style={{ padding: '60px', textAlign: 'center', color: '#6b7280' }}>Loading profile...</div>
+  );
+
+  const displayProfile = profile || user;
 
   return (
     <div className="student-profile">
       <header className="profile-header">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div>
-            <h1>Teacher Profile</h1>
-            <p>Manage your account settings and security</p>
-          </div>
-          <button className="btn-cancel" onClick={handleLogout} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Lock size={18} /> Logout
-          </button>
-        </div>
+        <h1>Teacher Profile</h1>
+        <p>Manage your account settings and security</p>
       </header>
 
       <div className="profile-grid">
-        {/* Left Column: Teacher Info */}
+        {/* Info Card */}
         <div className="profile-info-card card-box">
           <div className="profile-avatar-large">
-            T
+            {(displayProfile?.fullName || 'T').charAt(0).toUpperCase()}
           </div>
-          <h2>Teacher User</h2>
-          <p className="role-badge" style={{ backgroundColor: '#1A264A', color: 'white' }}>Teacher</p>
-          
+          <h2>{displayProfile?.fullName || 'Teacher'}</h2>
+          <p className="role-badge">Teacher</p>
+
           <div className="info-list">
             <div className="info-item">
               <Mail size={18} color="#6b7280" />
-              <span>teacher@relearn.edu</span>
+              <span>{displayProfile?.email || '—'}</span>
             </div>
             <div className="info-item">
               <User size={18} color="#6b7280" />
-              <span>Username: teacher_user</span>
+              <span>Role: {displayProfile?.role || 'TEACHER'}</span>
             </div>
-            <div className="info-item" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '12px', color: '#4b5563', fontSize: '0.95rem', padding: '12px', backgroundColor: '#f9fafb', borderRadius: '8px' }}>
-              <BookOpen size={18} color="#6b7280" />
-              <strong>Assigned:</strong> Y1A, Y2B, Y3A
-            </div>
-            <div className="info-item" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: '12px', color: '#4b5563', fontSize: '0.95rem', padding: '12px', backgroundColor: '#f9fafb', borderRadius: '8px' }}>
-              <Calendar size={18} color="#6b7280" />
-              <strong>Joined:</strong> September 1, 2023
-            </div>
+            {displayProfile?.joinedDate && (
+              <div className="info-item" style={{ padding: '12px', backgroundColor: '#f9fafb', borderRadius: '8px', justifyContent: 'center' }}>
+                <strong>Joined:</strong>&nbsp;{new Date(displayProfile.joinedDate).toLocaleDateString()}
+              </div>
+            )}
           </div>
+
+          <button onClick={handleLogout}
+            style={{ marginTop: '20px', width: '100%', padding: '10px', backgroundColor: '#fef2f2', color: '#dc2626', border: '1px solid #fca5a5', borderRadius: '8px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', fontWeight: 600 }}>
+            <LogOut size={18} /> Logout
+          </button>
         </div>
 
-        {/* Right Column: Security */}
-        <div className="profile-security-card card-box">
-          <h3>Change Password</h3>
-          <p className="security-desc">Ensure your account is using a long, random password to stay secure.</p>
-          
-          <form onSubmit={handlePasswordSubmit} className="security-form">
+        {/* Security Card */}
+        <div className="security-card card-box">
+          <div className="section-title">
+            <Shield size={24} color="#1A264A" />
+            <h2>Security Settings</h2>
+          </div>
+
+          {pwSuccess && (
+            <div style={{ backgroundColor: '#f0fdf4', color: '#16a34a', padding: '10px 14px', borderRadius: '8px', marginBottom: '16px', border: '1px solid #86efac' }}>
+              Password changed successfully!
+            </div>
+          )}
+          {pwError && (
+            <div style={{ backgroundColor: '#fef2f2', color: '#dc2626', padding: '10px 14px', borderRadius: '8px', marginBottom: '16px', border: '1px solid #fca5a5' }}>
+              {pwError}
+            </div>
+          )}
+
+          <form className="password-form" onSubmit={handlePasswordChange}>
+            <h3>Change Password</h3>
             <div className="form-group">
               <label>Current Password</label>
-              <input 
-                type="password" 
-                name="current"
-                value={passwords.current}
-                onChange={handleChange}
-                required 
-              />
+              <input type="password" value={currentPassword}
+                onChange={(e) => setCurrentPassword(e.target.value)}
+                placeholder="Enter current password" required />
             </div>
-            
             <div className="form-group">
               <label>New Password</label>
-              <input 
-                type="password" 
-                name="new"
-                value={passwords.new}
-                onChange={handleChange}
-                required 
-              />
+              <input type="password" value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                placeholder="Enter new password" required />
             </div>
-
             <div className="form-group">
               <label>Confirm New Password</label>
-              <input 
-                type="password" 
-                name="confirm"
-                value={passwords.confirm}
-                onChange={handleChange}
-                required 
-              />
+              <input type="password" value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                placeholder="Confirm new password" required />
             </div>
-
-            <button type="submit" className="btn-save-password">
-              Update Password
+            <button type="submit" className="btn-save" disabled={saving}>
+              <Save size={18} /> {saving ? 'Saving...' : 'Update Password'}
             </button>
           </form>
         </div>

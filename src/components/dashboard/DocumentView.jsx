@@ -1,6 +1,7 @@
 import React from 'react';
 import { User, Calendar, Eye, Download } from 'lucide-react';
 import './DocumentView.css';
+import { studentApi } from '../../api';
 
 const DocumentView = ({ data }) => {
   const doc = data || {
@@ -14,16 +15,21 @@ const DocumentView = ({ data }) => {
     pages: '24'
   };
 
+  const handleDownload = () => {
+    if (!doc?.fileUrl) return;
+    window.open(studentApi.downloadNote(doc.fileUrl), '_blank');
+  };
+
   return (
     <div className="document-view">
       <header className="document-header">
         <h1>{doc.title}</h1>
         <div className="document-meta">
-          <span className="meta-item"><User size={16} /> {doc.author}</span>
+          <span className="meta-item"><User size={16} /> {doc.author || `Teacher #${doc.teacherId || '-'}`}</span>
           <span className="meta-dot">•</span>
-          <span className="meta-item"><Calendar size={16} /> {doc.date}</span>
+          <span className="meta-item"><Calendar size={16} /> {doc.date || (doc.createdAt ? new Date(doc.createdAt).toLocaleDateString() : '—')}</span>
           <span className="meta-dot">•</span>
-          <span className="meta-item">{doc.subject}</span>
+          <span className="meta-item">{doc.subject || doc.courseName || 'Course'}</span>
         </div>
       </header>
 
@@ -49,10 +55,10 @@ const DocumentView = ({ data }) => {
         </div>
 
         <div className="doc-actions">
-          <button className="btn-view-online">
+          <button className="btn-view-online" onClick={handleDownload} disabled={!doc.fileUrl}>
             <Eye size={18} /> View Online
           </button>
-          <button className="btn-download">
+          <button className="btn-download" onClick={handleDownload} disabled={!doc.fileUrl}>
             <Download size={18} /> Download
           </button>
         </div>

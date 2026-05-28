@@ -155,3 +155,206 @@
 .btn-save:hover {
   background-color: #121b36;
 }
+
+/* ---- Teacher Profile additions ---- */
+
+.btn-back-text {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  color: #6b7280;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  width: fit-content;
+  transition: color 0.2s;
+  font-family: inherit;
+}
+
+.btn-back-text:hover {
+  color: #1A264A;
+}
+
+.teacher-role {
+  background-color: #1A264A;
+  color: white;
+}
+
+.assigned-classes-section {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.assigned-classes-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.assigned-classes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.assigned-class-chip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background-color: #f3f4f6;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.assigned-class-chip strong {
+  color: #1A264A;
+  font-weight: 700;
+}
+
+.assigned-class-chip span {
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+.btn-logout-profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 24px;
+  padding: 11px 20px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  color: #ef4444;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.btn-logout-profile:hover {
+  background-color: #fef2f2;
+  border-color: #fca5a5;
+}
+
+/* Profile security card */
+.profile-security-card {
+  padding: 32px;
+}
+
+.profile-security-card h3 {
+  font-size: 1.2rem;
+  color: #1A264A;
+  margin-bottom: 8px;
+}
+
+.security-desc {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+}
+
+.security-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.security-form .form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1A264A;
+}
+
+.password-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input-wrap input {
+  width: 100%;
+  padding: 12px 44px 12px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: #1f2937;
+  outline: none;
+  background-color: #f9fafb;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.password-input-wrap input:focus {
+  border-color: #1A264A;
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(26, 38, 74, 0.08);
+}
+
+.toggle-pw-btn {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.toggle-pw-btn:hover {
+  color: #1A264A;
+}
+
+.field-error {
+  font-size: 0.82rem;
+  color: #ef4444;
+  font-weight: 500;
+}
+
+.success-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 14px 20px;
+  color: #16a34a;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.btn-save-password {
+  background-color: #1A264A;
+  border: none;
+  padding: 13px 20px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-family: inherit;
+  margin-top: 8px;
+}
+
+.btn-save-password:hover {
+  background-color: #121b36;
+}

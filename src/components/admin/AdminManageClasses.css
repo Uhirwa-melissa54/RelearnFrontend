@@ -1,0 +1,307 @@
+.admin-manage-classes {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Header */
+.amc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.amc-header-text h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1A264A;
+  margin-bottom: 4px;
+}
+
+.amc-header-text p {
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+.btn-create-class {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #1A264A;
+  border: none;
+  padding: 11px 22px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.btn-create-class:hover {
+  background-color: #121b36;
+}
+
+/* Filter bar */
+.amc-filter-bar {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: none !important;
+}
+
+.amc-filter-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #4b5563;
+  white-space: nowrap;
+}
+
+.amc-filter-select {
+  padding: 9px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: #1f2937;
+  outline: none;
+  background: white;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  min-width: 140px;
+}
+
+.amc-filter-select:focus {
+  border-color: #1A264A;
+}
+
+/* Year tabs (sub-filter when a year is selected) */
+.amc-year-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 0 20px 16px;
+}
+
+.amc-year-tab {
+  padding: 6px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  background: white;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.amc-year-tab:hover {
+  border-color: #1A264A;
+  color: #1A264A;
+}
+
+.amc-year-tab.active {
+  background-color: #1A264A;
+  border-color: #1A264A;
+  color: white;
+}
+
+/* Classes grid */
+.amc-classes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* Class card */
+.amc-class-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.amc-class-card:hover {
+  border-color: #1A264A;
+  box-shadow: 0 8px 24px rgba(26, 38, 74, 0.08);
+}
+
+.amc-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.amc-card-id {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #1A264A;
+  line-height: 1;
+}
+
+.amc-card-year {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-top: 3px;
+}
+
+.amc-card-menu-btn {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.amc-card-menu-btn:hover {
+  background-color: #f3f4f6;
+  color: #1A264A;
+}
+
+/* Card stats */
+.amc-card-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.amc-card-stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+/* Main teacher */
+.amc-card-teacher {
+  padding-top: 12px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.amc-teacher-label {
+  font-size: 0.78rem;
+  color: #9ca3af;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.amc-teacher-name {
+  font-size: 0.9rem;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+/* Card actions */
+.amc-card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.btn-view-details {
+  flex: 1;
+  padding: 9px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: white;
+  color: #4b5563;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-view-details:hover {
+  background-color: #f3f4f6;
+}
+
+.btn-edit-class {
+  flex: 1;
+  padding: 9px 12px;
+  border: none;
+  border-radius: 8px;
+  background: #1A264A;
+  color: white;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-edit-class:hover {
+  background-color: #121b36;
+}
+
+/* Dropdown */
+.amc-dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 4px);
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  min-width: 130px;
+  overflow: hidden;
+}
+
+.amc-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 16px;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 0.88rem;
+  color: #4b5563;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  text-align: left;
+}
+
+.amc-dropdown-item:hover {
+  background-color: #f3f4f6;
+  color: #1A264A;
+}
+
+.amc-dropdown-item.danger {
+  color: #ef4444;
+}
+
+.amc-dropdown-item.danger:hover {
+  background-color: #fef2f2;
+}
+
+/* Empty state */
+.amc-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 60px 20px;
+  color: #9ca3af;
+  font-size: 0.95rem;
+  grid-column: 1 / -1;
+}

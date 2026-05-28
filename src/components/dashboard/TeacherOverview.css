@@ -50,19 +50,47 @@
   font-size: 0.9rem;
 }
 
-.section-title {
-  font-size: 1.1rem;
-  color: #1A264A;
+/* Section header with "View All" button */
+.section-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
 }
 
+.section-title {
+  font-size: 1.1rem;
+  color: #1A264A;
+  margin-bottom: 0;
+}
+
+.btn-view-all {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  color: #1A264A;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.btn-view-all:hover {
+  background-color: #f3f4f6;
+}
+
+/* Classes section */
 .classes-section {
   padding: 24px;
 }
 
 .classes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 20px;
 }
 
@@ -78,13 +106,14 @@
 .teacher-class-card:hover {
   border-color: #1A264A;
   box-shadow: 0 8px 24px rgba(26, 38, 74, 0.08);
+  transform: translateY(-2px);
 }
 
 .class-card-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .class-card-header h3 {
@@ -98,72 +127,158 @@
   color: #6b7280;
 }
 
+.class-card-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .class-stat-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
-  font-size: 0.95rem;
-}
-
-.class-stat-row:last-child {
-  margin-bottom: 0;
+  font-size: 0.9rem;
 }
 
 .class-stat-row span {
-  color: #4b5563;
+  color: #6b7280;
 }
 
 .class-stat-row strong {
   color: #1f2937;
+  font-weight: 600;
 }
 
+/* Recent Assignments */
 .recent-assignments-section {
   padding: 24px;
 }
 
-.assignments-list {
+.recent-assignments-list {
   display: flex;
   flex-direction: column;
+  gap: 12px;
 }
 
-.assignment-item {
+.recent-assignment-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 0;
-  border-bottom: 1px solid #e5e7eb;
+  padding: 18px 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s;
+  gap: 16px;
 }
 
-.assignment-item:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
+.recent-assignment-card:hover {
+  border-color: #1A264A;
+  box-shadow: 0 4px 16px rgba(26, 38, 74, 0.07);
+  transform: translateY(-1px);
 }
 
-.assignment-info h4 {
-  font-size: 1.05rem;
-  color: #1A264A;
+.ra-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.ra-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   margin-bottom: 6px;
 }
 
-.assignment-info p {
-  font-size: 0.9rem;
-  color: #6b7280;
+.ra-title-row h4 {
+  font-size: 1rem;
+  color: #1A264A;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.assignment-progress {
+.overdue-chip {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
+  gap: 4px;
+  background-color: #fef2f2;
+  color: #ef4444;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.ra-meta {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 10px;
+}
+
+.ra-progress-bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ra-progress-bar {
+  flex: 1;
+  height: 6px;
+  background-color: #e5e7eb;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.ra-progress-fill {
+  height: 100%;
+  background-color: #1A264A;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.ra-progress-label {
+  font-size: 0.8rem;
+  color: #6b7280;
+  font-weight: 500;
+  min-width: 32px;
   text-align: right;
 }
 
-.assignment-progress strong {
-  font-size: 1.1rem;
-  color: #1A264A;
+.ra-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
 }
 
-.assignment-progress span {
-  font-size: 0.85rem;
+.ra-submission-count {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.ra-submission-count strong {
+  font-size: 1.05rem;
+  color: #1A264A;
+  font-weight: 600;
+}
+
+.ra-submission-count span {
+  font-size: 0.8rem;
   color: #6b7280;
+}
+
+.pending-chip {
+  background-color: #fff7ed;
+  color: #f97316;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 10px;
+  white-space: nowrap;
 }

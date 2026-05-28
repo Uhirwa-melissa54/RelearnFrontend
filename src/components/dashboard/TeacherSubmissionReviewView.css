@@ -4,13 +4,6 @@
   gap: 24px;
 }
 
-.review-header {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  align-items: flex-start;
-}
-
 .btn-back-text {
   display: flex;
   align-items: center;
@@ -22,33 +15,60 @@
   font-weight: 500;
   cursor: pointer;
   padding: 0;
-  margin-bottom: 8px;
+  width: fit-content;
+  transition: color 0.2s;
+  font-family: inherit;
 }
 
 .btn-back-text:hover {
   color: #1A264A;
 }
 
+/* Header */
+.review-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .header-title-row {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
+  flex-wrap: wrap;
 }
 
 .header-title-row h1 {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: #1A264A;
   margin: 0;
 }
 
-.status-badge-small {
+.review-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.review-meta-item {
   display: flex;
   align-items: center;
   gap: 6px;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+/* Status badges */
+.status-badge-small {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   padding: 4px 12px;
   border-radius: 16px;
   font-size: 0.8rem;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .status-badge-small.graded {
@@ -56,78 +76,195 @@
   color: #16a34a;
 }
 
-.status-badge-small.active {
+.status-badge-small.pending {
   background-color: #fef3c7;
   color: #d97706;
 }
 
-.review-header p {
-  color: #6b7280;
-  font-size: 0.95rem;
-  margin: 0;
+.status-badge-small.late {
+  background-color: #fff7ed;
+  color: #f97316;
 }
 
+/* Success banner */
+.success-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 14px 20px;
+  color: #16a34a;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* Review grid */
 .review-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 24px;
+  align-items: start;
 }
 
-.submission-content, .grading-panel {
-  padding: 24px;
+.submission-content,
+.grading-panel {
+  padding: 28px;
 }
 
-.submission-content h2, .grading-panel h2 {
-  font-size: 1.2rem;
+.submission-content h2,
+.grading-panel h2 {
+  font-size: 1.1rem;
   color: #1A264A;
   margin-bottom: 20px;
-  padding-bottom: 12px;
+  padding-bottom: 14px;
   border-bottom: 1px solid #e5e7eb;
 }
 
+/* File attachment */
 .attached-file-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 18px 20px;
   border: 1px solid #e5e7eb;
-  border-radius: 8px;
+  border-radius: 10px;
   background-color: #f9fafb;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .file-info {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
+}
+
+.file-icon-wrap {
+  width: 44px;
+  height: 44px;
+  background-color: #f3f4f6;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .file-info h4 {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   color: #1f2937;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
+  font-weight: 600;
 }
 
 .file-info p {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: #6b7280;
 }
 
-.text-submission-box h3 {
-  font-size: 1rem;
+.btn-download {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  padding: 8px 16px;
+  border-radius: 8px;
   color: #4b5563;
-  margin-bottom: 12px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.btn-download:hover {
+  background-color: #f3f4f6;
+}
+
+/* Text submission */
+.text-submission-box h3 {
+  font-size: 0.95rem;
+  color: #4b5563;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .text-content {
-  padding: 20px;
+  padding: 18px 20px;
   background-color: #f8fafc;
   border-radius: 8px;
   border: 1px solid #e5e7eb;
   font-size: 0.95rem;
   color: #1f2937;
-  line-height: 1.6;
+  line-height: 1.7;
   white-space: pre-wrap;
+}
+
+.no-submission-msg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 40px 20px;
+  color: #9ca3af;
+  font-size: 0.95rem;
+}
+
+/* Grading panel */
+.student-info-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.student-avatar-review {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #1A264A;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.grading-form .form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.grading-form .form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1A264A;
+}
+
+.grading-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: #1f2937;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+
+.grading-form textarea:focus {
+  border-color: #1A264A;
+  box-shadow: 0 0 0 3px rgba(26, 38, 74, 0.08);
 }
 
 .score-input-wrapper {
@@ -137,10 +274,22 @@
 }
 
 .score-input-wrapper input {
-  width: 100px;
+  width: 90px;
+  padding: 10px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 700;
   text-align: center;
+  font-family: inherit;
+  color: #1A264A;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.score-input-wrapper input:focus {
+  border-color: #1A264A;
+  box-shadow: 0 0 0 3px rgba(26, 38, 74, 0.08);
 }
 
 .max-score {
@@ -149,10 +298,27 @@
   font-weight: 500;
 }
 
-.w-full {
-  width: 100%;
-  justify-content: center;
-  margin-top: 16px;
+.field-error {
+  font-size: 0.82rem;
+  color: #ef4444;
+  font-weight: 500;
 }
 
-/* Reusing .btn-secondary, .btn-primary, .form-group, etc. from global scope */
+.btn-save-grade {
+  width: 100%;
+  background-color: #1A264A;
+  border: none;
+  padding: 13px 20px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-family: inherit;
+  margin-top: 8px;
+}
+
+.btn-save-grade:hover {
+  background-color: #121b36;
+}

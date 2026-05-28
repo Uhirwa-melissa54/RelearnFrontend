@@ -1,34 +1,56 @@
 import React from 'react';
 import { FileText, Download, ArrowLeft } from 'lucide-react';
 import './HistoricalContent.css';
+import { studentApi, getUser } from '../../api';
 
 const HistoricalContent = ({ type, onNavigate, onSelectData }) => {
   const isNotes = type === 'notes';
-  
-  const data = [
-    {
-      subject: 'Mathematics',
-      items: [
-        { id: 1, title: isNotes ? 'Limits and Continuity' : 'Calculus Problem Set 1', date: 'May 3, 2026', size: '1.2 MB' },
-        { id: 2, title: isNotes ? 'Derivatives - Part 1' : 'Midterm Exam', date: 'May 5, 2026', size: '2.4 MB' }
-      ]
-    },
-    {
-      subject: 'Physics',
-      items: [
-        { id: 3, title: isNotes ? 'Kinematics Overview' : 'Lab Report 1', date: 'May 2, 2026', size: '3.1 MB' }
-      ]
+  const user = getUser();
+  const className = user?.className || 'Y1A';
+  const [selectedYear, setSelectedYear] = React.useState(user?.academicYear || `${new Date().getFullYear()}-${new Date().getFullYear() + 1}`);
+  const [groups, setGroups] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    const load = async () => {
+      setLoading(true);
+      try {
+        if (isNotes) {
+          const noteGroups = await studentApi.getNotesByYear(className, selectedYear);
+          setGroups((noteGroups || []).map(g => ({ subject: g.courseName, items: g.notes || [] })));
+        } else {
+          const assignmentGroups = await studentApi.getAssignmentsByYear(className, selectedYear);
+          setGroups((assignmentGroups || []).map(g => ({ subject: g.courseName, items: g.assignments || [] })));
+        }
+      } catch (err) {
+        console.error('Failed to load historical content:', err);
+        setGroups([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    load();
+  }, [isNotes, className, selectedYear]);
+
+  const yearOptions = React.useMemo(() => {
+    const current = new Date().getFullYear();
+    const opts = [];
+    for (let y = current + 1; y >= current - 5; y -= 1) {
+      opts.push(`${y - 1}-${y}`);
     }
-  ];
+    if (user?.academicYear && !opts.includes(user.academicYear)) {
+      opts.unshift(user.academicYear);
+    }
+    return [...new Set(opts)];
+  }, [user?.academicYear]);
 
   const handleItemClick = (item) => {
     if (isNotes) {
-      onSelectData('document', { ...item, subject: data.find(d => d.items.includes(item)).subject });
+      onSelectData('document', { ...item, subject: item.courseName });
       onNavigate('document');
     } else {
-      // Navigate to a read-only assignment view or handle download directly
-      // Since it's historical, we can just download or show a read-only preview
-      alert('Downloading historical assignment: ' + item.title);
+      onSelectData('assignment', { ...item, readOnly: true });
+      onNavigate('assignment');
     }
   };
 
@@ -40,10 +62,25 @@ const HistoricalContent = ({ type, onNavigate, onSelectData }) => {
         </button>
         <h1>Historical {isNotes ? 'Notes' : 'Assignments'}</h1>
         <p>Review and download materials from your past classes</p>
+        <div style={{ marginTop: '12px' }}>
+          <select value={selectedYear} onChange={(e) => setSelectedYear(e.target.value)}>
+            {yearOptions.map(year => (
+              <option key={year} value={year}>{year}</option>
+            ))}
+          </select>
+        </div>
       </header>
 
       <div className="subjects-container">
-        {data.map((group, idx) => (
+        {loading ? (
+          <div className="card-box" style={{ padding: '40px', textAlign: 'center', color: '#6b7280' }}>
+            Loading historical content...
+          </div>
+        ) : groups.length === 0 ? (
+          <div className="card-box" style={{ padding: '40px', textAlign: 'center', color: '#9ca3af' }}>
+            No historical {isNotes ? 'notes' : 'assignments'} found for {selectedYear}.
+          </div>
+        ) : groups.map((group, idx) => (
           <div key={idx} className="subject-group card-box">
             <h2 className="subject-title">{group.subject}</h2>
             <div className="historical-items-list">
@@ -53,7 +90,7 @@ const HistoricalContent = ({ type, onNavigate, onSelectData }) => {
                     <FileText size={20} color="#1A264A" />
                     <div className="item-details">
                       <h4>{item.title}</h4>
-                      <p>{item.date} • {item.size}</p>
+                      <p>{item.createdAt ? new Date(item.createdAt).toLocaleDateString() : (item.deadline ? new Date(item.deadline).toLocaleDateString() : '—')}</p>
                     </div>
                   </div>
                   <div className="item-actions" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
@@ -64,7 +101,11 @@ const HistoricalContent = ({ type, onNavigate, onSelectData }) => {
                     )}
                     <button className="download-btn" onClick={(e) => {
                       e.stopPropagation();
-                      alert(`Downloading ${item.title}`);
+                      if (isNotes && item.fileUrl) {
+                        window.open(studentApi.downloadNote(item.fileUrl), '_blank');
+                      } else if (!isNotes && item.fileUrl) {
+                        window.open(studentApi.downloadSubmission(item.fileUrl), '_blank');
+                      }
                     }}>
                       <Download size={18} />
                     </button>

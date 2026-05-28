@@ -1,0 +1,115 @@
+.teacher-assignments-view .assignments-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-primary-action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #1A264A;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-family: inherit;
+}
+
+.btn-primary-action:hover {
+  background-color: #121b36;
+}
+
+/* Status badges */
+.ta-status-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.ta-status-badge.status-active {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.ta-status-badge.status-overdue {
+  background-color: #fef2f2;
+  color: #ef4444;
+}
+
+.ta-status-badge.status-completed {
+  background-color: #f3f4f6;
+  color: #6b7280;
+}
+
+/* Pending review badge */
+.pending-review-badge {
+  background-color: #fff7ed;
+  color: #f97316;
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Progress bar */
+.ta-progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.ta-progress-bar {
+  flex: 1;
+  height: 6px;
+  background-color: #e5e7eb;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.ta-progress-fill {
+  height: 100%;
+  background-color: #1A264A;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.ta-progress-text {
+  font-size: 0.82rem;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+/* Card tweaks */
+.ta-card {
+  border-top: none !important;
+  border-left: 4px solid transparent;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.ta-card:hover {
+  border-left-color: #1A264A;
+  box-shadow: 0 8px 24px rgba(26, 38, 74, 0.08) !important;
+}
+
+/* Empty state */
+.empty-assignments {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 60px 20px;
+  color: #9ca3af;
+  font-size: 0.95rem;
+  border-top: none !important;
+}
