@@ -1,7 +1,7 @@
 import React from 'react';
-import { User, Calendar, Eye, Download } from 'lucide-react';
+import { User, Calendar, Eye, Download, FileText } from 'lucide-react';
 import './DocumentView.css';
-import { studentApi } from '../../api';
+import { studentApi, downloadNoteFile, authenticatedFetchBlob, normalizeStoredFilename } from '../../api';
 
 const DocumentView = ({ data }) => {
   const doc = data || {
@@ -15,10 +15,69 @@ const DocumentView = ({ data }) => {
     pages: '24'
   };
 
+  const downloadPath = doc?.fileUrl ? studentApi.downloadNote(doc.fileUrl) : null;
+  const downloadName = normalizeStoredFilename(doc?.fileUrl);
+
   const handleDownload = () => {
     if (!doc?.fileUrl) return;
-    window.open(studentApi.downloadNote(doc.fileUrl), '_blank');
+    downloadNoteFile(doc.fileUrl);
   };
+
+  const handleViewOnline = async () => {
+    if (!downloadPath) return;
+    try {
+      const blob = await authenticatedFetchBlob(downloadPath);
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(url), 60000);
+    } catch (err) {
+      alert('Failed to open file: ' + err.message);
+    }
+  };
+
+  const handleDownloadDescription = () => {
+    const blob = new Blob([doc?.description || 'No description available.'], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${(doc?.title || 'note').replace(/[^\w\-]+/g, '_')}-description.txt`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const [previewUrl, setPreviewUrl] = React.useState(null);
+  const [previewError, setPreviewError] = React.useState(null);
+  const canInlinePreview = !!downloadName && /\.(pdf|txt)$/i.test(downloadName);
+
+  React.useEffect(() => {
+    let blobUrl = null;
+    const loadPreview = async () => {
+      if (!canInlinePreview || !downloadPath) {
+        setPreviewUrl(null);
+        setPreviewError(null);
+        return;
+      }
+      try {
+        const blob = await authenticatedFetchBlob(downloadPath);
+        blobUrl = URL.createObjectURL(blob);
+        setPreviewUrl(blobUrl);
+        setPreviewError(null);
+      } catch (err) {
+        setPreviewUrl(null);
+        setPreviewError(err.message || 'Failed to load preview.');
+      }
+    };
+    loadPreview();
+    return () => {
+      if (blobUrl) URL.revokeObjectURL(blobUrl);
+    };
+  }, [downloadPath, canInlinePreview]);
 
   return (
     <div className="document-view">
@@ -55,39 +114,41 @@ const DocumentView = ({ data }) => {
         </div>
 
         <div className="doc-actions">
-          <button className="btn-view-online" onClick={handleDownload} disabled={!doc.fileUrl}>
+          <button className="btn-view-online" onClick={handleViewOnline} disabled={!doc.fileUrl}>
             <Eye size={18} /> View Online
           </button>
           <button className="btn-download" onClick={handleDownload} disabled={!doc.fileUrl}>
             <Download size={18} /> Download
+          </button>
+          <button className="btn-view-online" onClick={handleDownloadDescription} disabled={!doc.description}>
+            <FileText size={18} /> Description
           </button>
         </div>
       </div>
 
       <div className="document-preview-card card-box">
         <h3>Document Preview</h3>
-        <div className="preview-placeholder">
-          {/* A placeholder for the actual PDF/Document viewer */}
-        </div>
+        {canInlinePreview ? (
+          previewUrl ? (
+            <iframe
+              src={previewUrl}
+              title="Note Preview"
+              className="preview-placeholder"
+              style={{ width: '100%', minHeight: '500px', border: 'none', borderRadius: '8px' }}
+            />
+          ) : (
+            <div className="preview-placeholder" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#6b7280' }}>
+              {previewError || 'Loading preview...'}
+            </div>
+          )
+        ) : (
+          <div className="preview-placeholder" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#6b7280' }}>
+            {doc?.fileUrl ? 'Preview not supported for this file type. Use Download.' : 'No file attached for preview.'}
+          </div>
+        )}
       </div>
 
-      <div className="related-notes-card card-box">
-        <h3>Related Notes from {doc.subject}</h3>
-        <div className="related-notes-list">
-          <div className="related-note-item">
-            <h4>Limits and Continuity</h4>
-            <p>May 3, 2026</p>
-          </div>
-          <div className="related-note-item">
-            <h4>Derivatives - Part 1</h4>
-            <p>May 5, 2026</p>
-          </div>
-          <div className="related-note-item">
-            <h4>Derivatives - Part 2</h4>
-            <p>May 8, 2026</p>
-          </div>
-        </div>
-      </div>
+      {/* Related notes removed: now database-driven only */}
     </div>
   );
 };

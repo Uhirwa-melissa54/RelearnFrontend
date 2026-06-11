@@ -1,7 +1,7 @@
 import React from 'react';
 import { FileText, Download, ArrowLeft } from 'lucide-react';
 import './HistoricalContent.css';
-import { studentApi, getUser } from '../../api';
+import { studentApi, getUser, downloadNoteFile, downloadSubmissionFile } from '../../api';
 
 const HistoricalContent = ({ type, onNavigate, onSelectData }) => {
   const isNotes = type === 'notes';
@@ -54,6 +54,16 @@ const HistoricalContent = ({ type, onNavigate, onSelectData }) => {
     }
   };
 
+  const downloadText = (filename, text) => {
+    const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="historical-content">
       <header className="historical-header">
@@ -95,16 +105,25 @@ const HistoricalContent = ({ type, onNavigate, onSelectData }) => {
                   </div>
                   <div className="item-actions" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                     {!isNotes && (
-                      <span className="status-badge" style={{ backgroundColor: '#f0fdf4', color: '#22c55e', padding: '4px 12px', borderRadius: '16px', fontSize: '0.8rem', fontWeight: 600 }}>
-                        COMPLETED
-                      </span>
+                      <button
+                        className="download-btn"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          downloadText(`${item.title || 'assignment'}-description.txt`, item.description || 'No description available.');
+                        }}
+                        title="Download description"
+                      >
+                        <FileText size={16} />
+                      </button>
                     )}
                     <button className="download-btn" onClick={(e) => {
                       e.stopPropagation();
                       if (isNotes && item.fileUrl) {
-                        window.open(studentApi.downloadNote(item.fileUrl), '_blank');
+                        downloadNoteFile(item.fileUrl);
                       } else if (!isNotes && item.fileUrl) {
-                        window.open(studentApi.downloadSubmission(item.fileUrl), '_blank');
+                        downloadSubmissionFile(item.fileUrl);
+                      } else if (!isNotes) {
+                        downloadText(`${item.title || 'assignment'}-description.txt`, item.description || 'No description available.');
                       }
                     }}>
                       <Download size={18} />

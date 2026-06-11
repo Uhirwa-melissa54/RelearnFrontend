@@ -77,15 +77,7 @@ const LoginPage = () => {
 
             {/* Error message from backend */}
             {error && (
-              <div className="login-error" style={{
-                backgroundColor: '#fef2f2',
-                color: '#dc2626',
-                padding: '10px 14px',
-                borderRadius: '8px',
-                fontSize: '0.875rem',
-                marginBottom: '16px',
-                border: '1px solid #fca5a5',
-              }}>
+              <div className="login-error">
                 {error}
               </div>
             )}
@@ -97,6 +89,7 @@ const LoginPage = () => {
                 <div className="input-wrapper">
                   <Mail size={18} className="input-icon" />
                   <input
+                  
                     type="email"
                     id="email"
                     value={email}

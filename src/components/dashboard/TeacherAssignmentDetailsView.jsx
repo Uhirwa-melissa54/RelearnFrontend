@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Eye, Download, CheckCircle, Clock, ChevronLeft, AlertCircle, Users, FileText } from 'lucide-react';
 import './TeacherAssignmentDetailsView.css';
-import { teacherApi, studentApi } from '../../api';
+import { teacherApi, downloadSubmissionFile } from '../../api';
 
 const TeacherAssignmentDetailsView = ({ onNavigate, onSelectData, data }) => {
   const assignment = data || {};
   const [submissions, setSubmissions] = useState([]);
   const [stats, setStats]             = useState(null);
+  const [studentsMap, setStudentsMap] = useState({});
   const [loading, setLoading]         = useState(true);
   const [activeFilter, setActiveFilter] = useState('all');
 
@@ -18,8 +19,14 @@ const TeacherAssignmentDetailsView = ({ onNavigate, onSelectData, data }) => {
           teacherApi.getSubmissionsForAssignment(assignment.id),
           teacherApi.getStudentCount(assignment.className).then(r => teacherApi.getAssignmentStats(assignment.id, r?.studentCount || 0)),
         ]);
+        const classStudents = await teacherApi.getStudentsByClass(assignment.className);
+        const map = {};
+        (classStudents || []).forEach((s) => {
+          map[s.id] = s;
+        });
         setSubmissions(subs || []);
         setStats(st);
+        setStudentsMap(map);
       } catch (err) {
         console.error('Failed to load submissions:', err);
       } finally {
@@ -30,11 +37,14 @@ const TeacherAssignmentDetailsView = ({ onNavigate, onSelectData, data }) => {
   }, [assignment.id]);
 
   const handleGradeClick = (sub) => {
+    const student = studentsMap[sub.studentId];
     onSelectData('submission', {
       ...sub,
       assignmentTitle:  assignment.title,
       assignmentClass:  assignment.className,
       assignmentCourse: assignment.courseName,
+      studentName: student?.fullName,
+      studentClass: student?.className,
     });
     onNavigate('review-submission');
   };
@@ -127,12 +137,13 @@ const TeacherAssignmentDetailsView = ({ onNavigate, onSelectData, data }) => {
               <div key={sub.id} className="submission-list-item">
                 <div className="sub-left">
                   <div className="student-avatar-small"
-                    style={{ backgroundColor: getAvatarColor(String(sub.studentId)), color: 'white' }}>
-                    {sub.studentId}
+                    style={{ backgroundColor: getAvatarColor(studentsMap[sub.studentId]?.fullName || String(sub.studentId)), color: 'white' }}>
+                    {(studentsMap[sub.studentId]?.fullName || `S${sub.studentId}`).charAt(0).toUpperCase()}
                   </div>
                   <div className="sub-info">
-                    <h4>Student #{sub.studentId}</h4>
+                    <h4>{studentsMap[sub.studentId]?.fullName || `Student #${sub.studentId}`}</h4>
                     <p>
+                      {studentsMap[sub.studentId]?.className ? `${studentsMap[sub.studentId].className} · ` : ''}
                       Submitted: {sub.submittedAt ? new Date(sub.submittedAt).toLocaleString() : '—'}
                       {sub.status === 'LATE' && (
                         <span className="late-badge"><AlertCircle size={12} /> Late</span>
@@ -153,9 +164,14 @@ const TeacherAssignmentDetailsView = ({ onNavigate, onSelectData, data }) => {
                       <Eye size={18} />
                     </button>
                     {sub.fileUrl && (
-                      <a href={studentApi.downloadSubmission(sub.fileUrl)} download className="icon-btn" title="Download">
+                      <button
+                        type="button"
+                        className="icon-btn"
+                        title="Download"
+                        onClick={() => downloadSubmissionFile(sub.fileUrl)}
+                      >
                         <Download size={18} />
-                      </a>
+                      </button>
                     )}
                     <button className={sub.status === 'GRADED' ? 'btn-regrade' : 'btn-grade'}
                       onClick={() => handleGradeClick(sub)}>

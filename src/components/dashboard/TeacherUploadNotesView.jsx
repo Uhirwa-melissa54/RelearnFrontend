@@ -16,6 +16,23 @@ const TeacherUploadNotesView = ({ onNavigate, data }) => {
   const [errors, setErrors]         = useState({});
   const [saving, setSaving]         = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
+  const [classOptions, setClassOptions] = useState([]);
+  const [courseOptions, setCourseOptions] = useState([]);
+
+  useEffect(() => {
+    const loadAssignmentsScope = async () => {
+      try {
+        const profile = await teacherApi.getProfile();
+        const dashboard = await teacherApi.getDashboard(profile?.id || user?.id);
+        const cards = dashboard?.classCards || [];
+        setClassOptions([...new Set(cards.map(c => c.className).filter(Boolean))]);
+        setCourseOptions([...new Set(cards.map(c => c.courseName).filter(Boolean))]);
+      } catch (err) {
+        console.error('Failed to load teacher assigned class scope:', err);
+      }
+    };
+    loadAssignmentsScope();
+  }, [user?.id]);
 
   useEffect(() => {
     if (isEditMode && data?.note) {
@@ -135,13 +152,13 @@ const TeacherUploadNotesView = ({ onNavigate, data }) => {
             <div className="form-group half">
               <label>Class</label>
               <select name="class" value={formData.class} onChange={handleChange} className="form-select">
-                {['Y1A','Y1B','Y2A','Y2B','Y3A'].map(c => <option key={c} value={c}>{c}</option>)}
+                {(classOptions.length ? classOptions : ['Y1A']).map(c => <option key={c} value={c}>{c}</option>)}
               </select>
             </div>
             <div className="form-group half">
               <label>Course</label>
               <select name="course" value={formData.course} onChange={handleChange} className="form-select">
-                {['Mathematics','Physics','Chemistry','Biology'].map(c => <option key={c} value={c}>{c}</option>)}
+                {(courseOptions.length ? courseOptions : ['Mathematics']).map(c => <option key={c} value={c}>{c}</option>)}
               </select>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Calendar, Clock, Hash, ChevronLeft, CheckCircle, UploadCloud, X } from 'lucide-react';
 import './CreateAssignmentView.css';
 import { teacherApi, getUser } from '../../api';
@@ -19,6 +19,30 @@ const CreateAssignmentView = ({ onNavigate, data }) => {
   const [errors, setErrors]         = useState({});
   const [saving, setSaving]         = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
+  const [classOptions, setClassOptions] = useState([]);
+  const [courseOptions, setCourseOptions] = useState([]);
+
+  useEffect(() => {
+    const loadAssignedScope = async () => {
+      try {
+        const profile = await teacherApi.getProfile();
+        const dashboard = await teacherApi.getDashboard(profile?.id || user?.id);
+        const cards = dashboard?.classCards || [];
+        const classes = [...new Set(cards.map(c => c.className).filter(Boolean))];
+        const courses = [...new Set(cards.map(c => c.courseName).filter(Boolean))];
+        setClassOptions(classes);
+        setCourseOptions(courses);
+        setFormData(prev => ({
+          ...prev,
+          class: classData?.id || classData?.className || classes[0] || prev.class,
+          course: classData?.subject || classData?.courseName || courses[0] || prev.course,
+        }));
+      } catch (err) {
+        console.error('Failed to load assigned classes for assignment creation:', err);
+      }
+    };
+    loadAssignedScope();
+  }, [classData, user?.id]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -50,35 +74,18 @@ const CreateAssignmentView = ({ onNavigate, data }) => {
 
     setSaving(true);
     try {
-      // If a file is attached, upload via multipart; otherwise use JSON
       const deadline = `${formData.dueDate}T${formData.dueTime}:00`;
-
-      if (formData.file) {
-        const fd = new FormData();
-        fd.append('title',          formData.title);
-        fd.append('description',    formData.description || '');
-        fd.append('deadline',       deadline);
-        fd.append('className',      formData.class);
-        fd.append('courseName',     formData.course);
-        fd.append('academicYear',   formData.academicYear);
-        fd.append('teacherId',      user.id);
-        fd.append('submissionType', formData.submissionType);
-        fd.append('file',           formData.file);
-        // Use the multipart endpoint on the assignment controller
-        const { apiUpload } = await import('../../api');
-        await apiUpload('/teacher/assignments', fd, 'POST');
-      } else {
-        await teacherApi.createAssignment({
-          title:          formData.title,
-          description:    formData.description,
-          deadline,
-          className:      formData.class,
-          courseName:     formData.course,
-          academicYear:   formData.academicYear,
-          teacherId:      user.id,
-          submissionType: formData.submissionType,
-        });
-      }
+      await teacherApi.createAssignment({
+        title:          formData.title,
+        description:    formData.description,
+        deadline,
+        className:      formData.class,
+        courseName:     formData.course,
+        academicYear:   formData.academicYear,
+        teacherId:      user.id,
+        submissionType: formData.submissionType,
+        fileUrl:        '',
+      });
 
       setSaveSuccess(true);
       setTimeout(() => {
@@ -138,13 +145,13 @@ const CreateAssignmentView = ({ onNavigate, data }) => {
               <div className="form-group half">
                 <label>Class</label>
                 <select name="class" value={formData.class} onChange={handleChange} className="ca-select">
-                  {['Y1A','Y1B','Y2A','Y2B','Y3A'].map(c => <option key={c} value={c}>{c}</option>)}
+                  {(classOptions.length ? classOptions : ['Y1A']).map(c => <option key={c} value={c}>{c}</option>)}
                 </select>
               </div>
               <div className="form-group half">
                 <label>Course</label>
                 <select name="course" value={formData.course} onChange={handleChange} className="ca-select">
-                  {['Mathematics','Physics','Chemistry','Biology'].map(c => <option key={c} value={c}>{c}</option>)}
+                  {(courseOptions.length ? courseOptions : ['Mathematics']).map(c => <option key={c} value={c}>{c}</option>)}
                 </select>
               </div>
             </div>

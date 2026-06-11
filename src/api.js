@@ -10,7 +10,61 @@
  *   - user         → localStorage (id, email, role, className, academicYear)
  */
 
-const BASE_URL = '/api';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
+
+/**
+ * Normalizes Note/Submission.fileUrl to the bare stored filename.
+ * Handles legacy values that stored a full URL or filesystem path.
+ */
+export const normalizeStoredFilename = (fileRef) => {
+  if (!fileRef) return '';
+  const value = String(fileRef).trim();
+  if (!value) return '';
+
+  if (/^https?:\/\//i.test(value)) {
+    try {
+      const parts = new URL(value).pathname.split('/').filter(Boolean);
+      return decodeURIComponent(parts[parts.length - 1] || '');
+    } catch {
+      return decodeURIComponent(value.split('/').pop() || value);
+    }
+  }
+
+  const normalized = value.replace(/\\/g, '/');
+  if (normalized.includes('/')) {
+    return decodeURIComponent(normalized.split('/').pop());
+  }
+  return decodeURIComponent(value);
+};
+
+/** Builds a safe authenticated download path for a stored file reference. */
+export const buildDownloadPath = (basePath, fileRef) => {
+  const filename = normalizeStoredFilename(fileRef);
+  if (!filename) return null;
+  return `${basePath}/${encodeURIComponent(filename)}`;
+};
+
+/** Download a teacher note file with JWT auth. */
+export const downloadNoteFile = async (fileRef) => {
+  const path = buildDownloadPath('/teacher/notes/download', fileRef);
+  const filename = normalizeStoredFilename(fileRef);
+  if (!path || !filename) {
+    alert('Download failed: no file attached.');
+    return;
+  }
+  await authenticatedDownload(path, filename);
+};
+
+/** Download a submission file with JWT auth. */
+export const downloadSubmissionFile = async (fileRef) => {
+  const path = buildDownloadPath('/submissions/download', fileRef);
+  const filename = normalizeStoredFilename(fileRef);
+  if (!path || !filename) {
+    alert('Download failed: no file attached.');
+    return;
+  }
+  await authenticatedDownload(path, filename);
+};
 
 // ----------------------------------------------------------------
 //  Token helpers
@@ -144,17 +198,132 @@ export const apiRequest = async (path, options = {}) => {
 };
 
 /**
- * Multipart form data request (for file uploads).
- * Does NOT set Content-Type — browser sets it with boundary automatically.
+ * Downloads a file from an authenticated backend endpoint.
+ * Sends the JWT Authorization header (unlike direct <a href> or window.open).
+ * Converts the response to a blob and triggers a browser download.
+ *
+ * @param {string} url       - full API path, e.g. /api/teacher/notes/download/file.pdf
+ * @param {string} filename  - the filename to use for the downloaded file
  */
-export const apiUpload = async (path, formData, method = 'POST') => {
+export const authenticatedDownload = async (url, filename) => {
+  if (!url || url.includes('://')) {
+    alert('Download failed: invalid file reference. Please re-upload the note file.');
+    return;
+  }
+
+  const safeFilename = normalizeStoredFilename(filename) || filename || 'download';
   const token = getToken();
 
-  const response = await fetch(`${BASE_URL}${path}`, {
-    method,
-    headers: token ? { Authorization: `Bearer ${token}` } : {},
-    body: formData,
-  });
+  try {
+    const response = await fetch(`${BASE_URL}${url}`, {
+      method: 'GET',
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+    });
+
+    if (!response.ok) {
+      // Try to refresh once on 401
+      if (response.status === 401) {
+        const refreshed = await tryRefreshToken();
+        if (refreshed) {
+          const retryResponse = await fetch(`${BASE_URL}${url}`, {
+            method: 'GET',
+            headers: { Authorization: `Bearer ${getToken()}` },
+          });
+          if (!retryResponse.ok) throw new Error(`Download failed: ${retryResponse.status}`);
+          return triggerBlobDownload(await retryResponse.blob(), safeFilename);
+        }
+        clearAuth();
+        window.location.href = '/login';
+        return;
+      }
+      throw new Error(`Download failed: ${response.status}`);
+    }
+
+    await triggerBlobDownload(await response.blob(), safeFilename);
+  } catch (err) {
+    const message = err.message === 'Failed to fetch'
+      ? 'Cannot reach the API server. Ensure Discovery, Auth, Notes, Assignment services and API Gateway are running, then open the app at http://localhost:5173.'
+      : err.message;
+    alert('Download failed: ' + message);
+  }
+};
+
+/**
+ * Creates a temporary blob URL and clicks it to trigger a browser download.
+ * Cleans up the blob URL after the click.
+ */
+const triggerBlobDownload = async (blob, filename) => {
+  const blobUrl = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = blobUrl;
+  a.download = filename || 'download';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  // Revoke after a short delay to let the download start
+  setTimeout(() => URL.revokeObjectURL(blobUrl), 5000);
+};
+
+/**
+ * Fetches a protected file and returns the response Blob.
+ * Used for inline preview (iframe) and view-online flows.
+ *
+ * @param {string} path - API path, e.g. /teacher/notes/download/file.pdf
+ */
+export const authenticatedFetchBlob = async (path) => {
+  if (!path || path.includes('://')) {
+    throw new Error('Invalid file reference. Please re-upload the note file.');
+  }
+
+  const doFetch = async (token) =>
+    fetch(`${BASE_URL}${path}`, {
+      method: 'GET',
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+    });
+
+  let response = await doFetch(getToken());
+
+  if (response.status === 401) {
+    const refreshed = await tryRefreshToken();
+    if (refreshed) {
+      response = await doFetch(getToken());
+    } else {
+      clearAuth();
+      window.location.href = '/login';
+      throw new Error('Session expired. Please sign in again.');
+    }
+  }
+
+  if (!response.ok) {
+    throw new Error(`Failed to load file: ${response.status}`);
+  }
+
+  return response.blob();
+};
+
+/**
+ * Multipart upload with JWT auth (no Content-Type — browser sets boundary).
+ */
+const apiUpload = async (path, formData, method = 'POST') => {
+  const doUpload = async (token) =>
+    fetch(`${BASE_URL}${path}`, {
+      method,
+      headers: token ? { Authorization: `Bearer ${token}` } : {},
+      body: formData,
+    });
+
+  let response = await doUpload(getToken());
+
+  if (response.status === 401) {
+    const refreshed = await tryRefreshToken();
+    if (refreshed) {
+      response = await doUpload(getToken());
+    } else {
+      clearAuth();
+      window.location.href = '/login';
+      throw new Error('Session expired. Please sign in again.');
+    }
+  }
 
   if (!response.ok) {
     const err = await response.json().catch(() => ({}));
@@ -271,8 +440,32 @@ export const adminApi = {
 
   getClassDetails: (className) => apiRequest(`/admin/classes/${className}`),
 
+  createClass: (data) =>
+    apiRequest('/admin/classes', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
+
+  updateClass: (className, data) =>
+    apiRequest(`/admin/classes/${encodeURIComponent(className)}`, {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    }),
+
+  deleteClass: (className) =>
+    apiRequest(`/admin/classes/${encodeURIComponent(className)}`, { method: 'DELETE' }),
+
+  assignTeacher: (className, teacherId) =>
+    apiRequest(`/admin/classes/${encodeURIComponent(className)}/assign-teacher`, {
+      method: 'PATCH',
+      body: JSON.stringify({ teacherId }),
+    }),
+
   getStudentsByClass: (className) =>
-    apiRequest(`/admin/classes/${className}/students`),
+    apiRequest(`/admin/classes/${encodeURIComponent(className)}/students`),
+
+  getClassesByTeacher: (teacherId) =>
+    apiRequest(`/admin/classes/teacher/${teacherId}`),
 
   getAcademicYears: () => apiRequest('/admin/academic-years'),
 
@@ -306,6 +499,10 @@ export const teacherApi = {
 
   getStudentsByClass: (className) =>
     apiRequest(`/teacher/classes/${className}/students`),
+
+  // Returns classes assigned to this teacher by admin (from AcademicClass table)
+  getAssignedClasses: () =>
+    apiRequest('/teacher/assigned-classes'),
 
   // Dashboard
   getDashboard: (teacherId) =>
@@ -366,7 +563,7 @@ export const teacherApi = {
   deleteNote: (id) =>
     apiRequest(`/teacher/notes/${id}`, { method: 'DELETE' }),
 
-  downloadNote: (filename) => `${BASE_URL}/teacher/notes/download/${filename}`,
+  downloadNote: (fileRef) => buildDownloadPath('/teacher/notes/download', fileRef),
 };
 
 // ----------------------------------------------------------------
@@ -375,6 +572,8 @@ export const teacherApi = {
 
 export const studentApi = {
   getProfile: () => apiRequest('/student/me'),
+
+  getClasses: () => apiRequest('/student/classes'),
 
   changePassword: (data) =>
     apiRequest('/student/me/password', {
@@ -394,7 +593,7 @@ export const studentApi = {
   getNotesByYear: (className, academicYear) =>
     apiRequest(`/student/notes/history/${className}/${academicYear}`),
 
-  downloadNote: (filename) => `${BASE_URL}/teacher/notes/download/${filename}`,
+  downloadNote: (fileRef) => buildDownloadPath('/teacher/notes/download', fileRef),
 
   // Assignments
   getAssignmentsByClass: (className, academicYear = '') =>
@@ -425,5 +624,5 @@ export const studentApi = {
   getMySubmissionForAssignment: (assignmentId, studentId) =>
     apiRequest(`/submissions/my/${assignmentId}?studentId=${studentId}`),
 
-  downloadSubmission: (filename) => `${BASE_URL}/submissions/download/${filename}`,
+  downloadSubmission: (fileRef) => buildDownloadPath('/submissions/download', fileRef),
 };

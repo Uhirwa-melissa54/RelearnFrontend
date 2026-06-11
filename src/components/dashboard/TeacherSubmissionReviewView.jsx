@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Download, FileText, CheckCircle, ChevronLeft, User, Calendar, AlertCircle } from 'lucide-react';
 import './TeacherSubmissionReviewView.css';
-import { teacherApi, studentApi, getUser } from '../../api';
+import { teacherApi, getUser, downloadSubmissionFile, normalizeStoredFilename } from '../../api';
 
 const TeacherSubmissionReviewView = ({ onNavigate, data }) => {
   const submission = data || {};
@@ -51,7 +51,7 @@ const TeacherSubmissionReviewView = ({ onNavigate, data }) => {
 
       <header className="review-header">
         <div className="header-title-row">
-          <h1>Student #{submission.studentId} Submission</h1>
+          <h1>{submission.studentName || `Student #${submission.studentId}`} Submission</h1>
           <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
             {submission.status === 'LATE' && (
               <span className="status-badge-small late"><AlertCircle size={13} /> Late</span>
@@ -103,13 +103,17 @@ const TeacherSubmissionReviewView = ({ onNavigate, data }) => {
               <div className="file-info">
                 <div className="file-icon-wrap"><FileText size={22} color="#1A264A" /></div>
                 <div>
-                  <h4>{submission.fileUrl}</h4>
+                  <h4>{normalizeStoredFilename(submission.fileUrl)}</h4>
                   <p>Click to download</p>
                 </div>
               </div>
-              <a href={studentApi.downloadSubmission(submission.fileUrl)} download className="btn-download">
+              <button
+                type="button"
+                className="btn-download"
+                onClick={() => downloadSubmissionFile(submission.fileUrl)}
+              >
                 <Download size={16} /> Download
-              </a>
+              </button>
             </div>
           )}
 
@@ -126,11 +130,11 @@ const TeacherSubmissionReviewView = ({ onNavigate, data }) => {
           <h2>Evaluation</h2>
           <div className="student-info-row">
             <div className="student-avatar-review" style={{ backgroundColor: '#1A264A', color: 'white', width: 40, height: 40, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700 }}>
-              {submission.studentId}
+              {(submission.studentName || `S${submission.studentId}`).charAt(0).toUpperCase()}
             </div>
             <div>
-              <strong>Student #{submission.studentId}</strong>
-              <p style={{ fontSize: '0.85rem', color: '#6b7280' }}>Student</p>
+              <strong>{submission.studentName || `Student #${submission.studentId}`}</strong>
+              <p style={{ fontSize: '0.85rem', color: '#6b7280' }}>{submission.studentClass || 'Student'}</p>
             </div>
           </div>
 

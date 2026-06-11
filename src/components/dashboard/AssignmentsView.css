@@ -196,6 +196,11 @@
   color: #f59e0b;
 }
 
+.status-badge.status-active {
+  background-color: #eff6ff;
+  color: #2563eb;
+}
+
 .status-badge.status-resolved {
   background-color: #f0fdf4;
   color: #22c55e;

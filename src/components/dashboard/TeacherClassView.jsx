@@ -23,21 +23,20 @@ const TeacherClassView = ({ onNavigate, onSelectData, data }) => {
           return;
         }
 
+        // Always fetch ALL assignments for this teacher then filter by className.
+        // This avoids the empty-courseName issue when navigating from the class list.
         const [noteData, assignmentData, students] = await Promise.all([
-          courseName
-            ? teacherApi.getNotesByClassAndCourse(teacherId, className, courseName)
-            : teacherApi.getNotes(teacherId),
-          courseName
-            ? teacherApi.getAssignmentsByClassAndCourse(teacherId, className, courseName)
-            : teacherApi.getAssignments(teacherId),
+          teacherApi.getNotes(teacherId),
+          teacherApi.getAssignments(teacherId),
           teacherApi.getStudentsByClass(className),
         ]);
 
-        const filteredNotes = (noteData || []).filter(n =>
-          !courseName || (n.className === className && n.courseName === courseName)
-        );
-        const filteredAssignments = (assignmentData || []).filter(a =>
-          a.className === className && (!courseName || a.courseName === courseName)
+        // Filter notes for this class (ignore courseName filter — show all notes for the class)
+        const filteredNotes = (noteData || []).filter(n => n.className === className);
+
+        // Filter assignments for this class
+        const filteredAssignments = (assignmentData || []).filter(
+          a => a.className === className
         );
 
         setNotes(filteredNotes);
@@ -50,7 +49,7 @@ const TeacherClassView = ({ onNavigate, onSelectData, data }) => {
       }
     };
     load();
-  }, [className, courseName, user?.id]);
+  }, [className, user?.id]);
 
   if (loading) {
     return (
@@ -112,9 +111,21 @@ const TeacherClassView = ({ onNavigate, onSelectData, data }) => {
         <div className="stat-card-slim card-box">
           <div className="slim-stat-header">
             <Calendar size={18} color="#22c55e" />
+            <span>Total Assignments</span>
+          </div>
+          <span className="slim-stat-value">{assignments.length}</span>
+        </div>
+        <div className="stat-card-slim card-box">
+          <div className="slim-stat-header">
+            <Calendar size={18} color="#f97316" />
             <span>Active Assignments</span>
           </div>
-          <span className="slim-stat-value">{assignments.filter(a => a.assignmentStatus === 'ACTIVE').length}</span>
+          <span className="slim-stat-value">
+            {assignments.filter(a =>
+              a.assignmentStatus === 'ACTIVE' ||
+              (a.deadline && new Date(a.deadline) > new Date())
+            ).length}
+          </span>
         </div>
         <div className="stat-card-slim card-box">
           <div className="slim-stat-header">
