@@ -22,12 +22,7 @@
 }
 
 .stat-card {
-  background: #ffffff;
-  border: none;
-  border-top: 4px solid var(--primary-color);
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  padding: 20px;
+  padding: 22px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -114,14 +109,20 @@
 }
 
 .subject-card {
-  background: #ffffff;
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  padding: 16px;
+  background: var(--bg-main);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm), var(--shadow-md);
+  padding: 18px;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.subject-card:hover {
+  box-shadow: var(--shadow-md), var(--shadow-lg);
+  transform: translateY(-1px);
 }
 
 .subject-card h3 {
@@ -154,21 +155,21 @@
 }
 
 .list-item {
-  background: #ffffff;
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
-  padding: 16px;
+  background: var(--bg-main);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 16px 18px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .list-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
 }
 
 .list-item-main h4 {

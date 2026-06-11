@@ -49,9 +49,9 @@
 .doc-details-grid {
   display: flex;
   justify-content: space-between;
-  padding: 16px 0;
-  border-top: 1px solid #e5e7eb;
-  border-bottom: 1px solid #e5e7eb;
+  padding: 18px 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .detail-col {
@@ -82,33 +82,37 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 24px;
-  border-radius: 8px;
+  padding: 11px 24px;
+  border-radius: 10px;
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
   flex: 1;
+  font-family: var(--font-family);
 }
 
 .btn-view-online {
-  background: white;
-  border: 1px solid #e5e7eb;
-  color: #4b5563;
+  background: var(--bg-main);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-main);
 }
 
 .btn-view-online:hover {
-  background: #f3f4f6;
+  background: var(--bg-offset);
+  border-color: rgba(26, 38, 74, 0.12);
 }
 
 .btn-download {
-  background: #1A264A;
+  background: var(--primary-color);
   border: none;
   color: white;
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-download:hover {
-  background: #121b36;
+  background: var(--primary-hover);
+  box-shadow: var(--shadow-md);
 }
 
 .document-preview-card {
@@ -125,9 +129,9 @@
 
 .preview-placeholder {
   flex: 1;
-  background-color: #f3f4f6;
-  border-radius: 8px;
-  border: 1px solid #e5e7eb;
+  background-color: var(--bg-offset);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
 }
 
 .related-notes-card h3 {

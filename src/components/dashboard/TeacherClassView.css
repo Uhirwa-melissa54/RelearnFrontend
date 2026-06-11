@@ -51,21 +51,22 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background-color: white;
-  border: 1px solid #e5e7eb;
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-subtle);
   padding: 10px 20px;
-  border-radius: 8px;
-  color: #4b5563;
-  font-weight: 500;
+  border-radius: 10px;
+  color: var(--text-main);
+  font-weight: 600;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: all 0.2s;
-  font-family: inherit;
+  transition: all 0.2s ease;
+  font-family: var(--font-family);
 }
 
 .btn-secondary:hover {
-  background-color: #f3f4f6;
-  border-color: #d1d5db;
+  background-color: var(--bg-offset);
+  border-color: rgba(26, 38, 74, 0.12);
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-secondary.btn-sm {

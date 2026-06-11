@@ -80,21 +80,22 @@
 }
 
 .detail-item {
-  background: #ffffff;
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
-  padding: 16px;
+  background: var(--bg-main);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 16px 18px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.15s ease;
 }
 
 .detail-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+  background: #fafbfd;
 }
 
 .detail-item h4 {

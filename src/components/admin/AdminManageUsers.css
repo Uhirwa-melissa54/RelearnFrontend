@@ -46,17 +46,17 @@
 
 /* Tabs + search card */
 .amu-content-card {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  /* overflow: hidden was clipping the 3-dot dropdown menus — removed */
+  background: var(--bg-main);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm), var(--shadow-md);
   overflow: visible;
 }
 
 /* Tabs */
 .amu-tabs {
   display: flex;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .amu-tab {
