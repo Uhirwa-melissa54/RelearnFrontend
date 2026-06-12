@@ -64,7 +64,7 @@ const TeacherAssignmentDetailsView = ({ onNavigate, onSelectData, data }) => {
 
   const getInitials   = (name) => (name || '?').split(' ').map(n => n[0]).join('');
   const getAvatarColor = (name) => {
-    const colors = ['#1A264A', '#7c3aed', '#0891b2', '#059669', '#d97706'];
+    const colors = ['#00234b', '#7c3aed', '#0891b2', '#059669', '#d97706'];
     return colors[(name || '').charCodeAt(0) % colors.length];
   };
 
@@ -96,7 +96,7 @@ const TeacherAssignmentDetailsView = ({ onNavigate, onSelectData, data }) => {
       <div className="ad-stats-grid">
         {[
           { label: 'Total Submitted', value: totalSubmitted, color: '#16a34a' },
-          { label: 'Graded',          value: totalGraded,    color: '#1A264A' },
+          { label: 'Graded',          value: totalGraded,    color: '#00234b' },
           { label: 'Pending',         value: totalPending,   color: '#f97316' },
           { label: 'Late',            value: totalLate,      color: '#ef4444' },
         ].map((s, i) => (

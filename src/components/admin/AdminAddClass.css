@@ -22,13 +22,13 @@
 }
 
 .btn-back-text:hover {
-  color: #1A264A;
+  color: #00234b;
 }
 
 .aac-header h1 {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #1A264A;
+  color: #00234b;
   margin-bottom: 4px;
 }
 
@@ -71,7 +71,7 @@
 .aac-preview-id {
   font-size: 1.4rem;
   font-weight: 800;
-  color: #1A264A;
+  color: #00234b;
 }
 
 .aac-preview-sub {
@@ -87,7 +87,7 @@
 .aac-section-heading {
   font-size: 1rem;
   font-weight: 700;
-  color: #1A264A;
+  color: #00234b;
   margin-bottom: 20px;
 }
 
@@ -102,7 +102,7 @@
 .form-group label {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #1A264A;
+  color: #00234b;
 }
 
 .form-group input,
@@ -121,8 +121,8 @@
 
 .form-group input:focus,
 .form-group select:focus {
-  border-color: #1A264A;
-  box-shadow: 0 0 0 3px rgba(26, 38, 74, 0.08);
+  border-color: #00234b;
+  box-shadow: 0 0 0 3px rgba(0, 35, 75, 0.08);
 }
 
 .form-row {
@@ -200,7 +200,7 @@
 }
 
 .aac-course-row select:focus {
-  border-color: #1A264A;
+  border-color: #00234b;
 }
 
 .aac-remove-course {
@@ -229,7 +229,7 @@
   border: 1px dashed #cbd5e1;
   padding: 10px 16px;
   border-radius: 8px;
-  color: #1A264A;
+  color: #00234b;
   font-size: 0.88rem;
   font-weight: 600;
   cursor: pointer;
@@ -241,7 +241,7 @@
 }
 
 .btn-add-course-row:hover {
-  border-color: #1A264A;
+  border-color: #00234b;
   background-color: #f8faff;
 }
 
@@ -273,7 +273,7 @@
 }
 
 .btn-save-class {
-  background: #1A264A;
+  background: #00234b;
   border: none;
   padding: 12px 28px;
   border-radius: 8px;
@@ -286,5 +286,5 @@
 }
 
 .btn-save-class:hover {
-  background-color: #121b36;
+  background-color: #001a38;
 }

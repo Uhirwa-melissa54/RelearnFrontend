@@ -6,7 +6,7 @@
 
 .assignment-header h1 {
   font-size: 1.5rem;
-  color: #1A264A;
+  color: #00234b;
   margin-bottom: 8px;
 }
 
@@ -17,7 +17,7 @@
 
 .instructions-card h3, .submit-card h3 {
   font-size: 1.1rem;
-  color: #1A264A;
+  color: #00234b;
   margin-bottom: 16px;
 }
 
@@ -59,7 +59,7 @@
 }
 
 .tab-btn.active {
-  background-color: #1A264A;
+  background-color: #00234b;
   color: white;
   box-shadow: 0 4px 10px rgba(59, 130, 246, 0.2);
 }
@@ -80,11 +80,11 @@
 
 .upload-dropzone:hover {
   background-color: #f8fafc;
-  border-color: #1A264A;
+  border-color: #00234b;
 }
 
 .upload-dropzone p {
-  color: #1A264A;
+  color: #00234b;
   font-size: 1.05rem;
   margin-bottom: 0;
 }
@@ -112,7 +112,7 @@
 
 .comments-section textarea:focus {
   outline: none;
-  border-color: #1A264A;
+  border-color: #00234b;
   background-color: #ffffff;
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
@@ -159,5 +159,5 @@
 }
 
 .btn-submit:hover {
-  background: #1A264A;
+  background: #00234b;
 }

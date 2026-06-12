@@ -27,12 +27,12 @@
 }
 
 .back-btn:hover {
-  color: #1A264A;
+  color: #00234b;
 }
 
 .historical-header h1 {
   font-size: 1.5rem;
-  color: #1A264A;
+  color: #00234b;
 }
 
 .historical-header p {
@@ -52,7 +52,7 @@
 
 .subject-title {
   font-size: 1.2rem;
-  color: #1A264A;
+  color: #00234b;
   margin-bottom: 20px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--border-subtle);
@@ -78,7 +78,7 @@
 
 .historical-item:hover {
   background-color: var(--bg-main);
-  border-color: rgba(26, 38, 74, 0.12);
+  border-color: rgba(0, 35, 75, 0.12);
   box-shadow: var(--shadow-md);
   transform: translateY(-1px);
 }

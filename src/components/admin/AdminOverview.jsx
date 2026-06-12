@@ -23,9 +23,9 @@ const AdminOverview = ({ onNavigate }) => {
   }, []);
 
   const quickActions = [
-    { label: 'Manage Users',    desc: 'Register and manage students and teachers', icon: <Users size={28} color="#1A264A" />,   view: 'manage-users' },
-    { label: 'Manage Classes',  desc: 'Create and organize class structures',       icon: <BookOpen size={28} color="#1A264A" />, view: 'manage-classes' },
-    { label: 'View Reports',    desc: 'Analytics and performance metrics',           icon: <TrendingUp size={28} color="#1A264A" />, view: 'overview' },
+    { label: 'Manage Users',    desc: 'Register and manage students and teachers', icon: <Users size={28} color="#00234b" />,   view: 'manage-users' },
+    { label: 'Manage Classes',  desc: 'Create and organize class structures',       icon: <BookOpen size={28} color="#00234b" />, view: 'manage-classes' },
+    { label: 'View Reports',    desc: 'Analytics and performance metrics',           icon: <TrendingUp size={28} color="#00234b" />, view: 'overview' },
   ];
 
   if (loading) {
@@ -49,7 +49,7 @@ const AdminOverview = ({ onNavigate }) => {
   }
 
   const stats = [
-    { label: 'Total Students',  value: dashboard?.totalStudents?.toLocaleString() || '0',  icon: <Users size={28} color="#1A264A" />,   iconBg: '#eef2ff' },
+    { label: 'Total Students',  value: dashboard?.totalStudents?.toLocaleString() || '0',  icon: <Users size={28} color="#00234b" />,   iconBg: '#eef2ff' },
     { label: 'Total Teachers',  value: dashboard?.totalTeachers?.toLocaleString() || '0',  icon: <Users size={28} color="#059669" />,   iconBg: '#ecfdf5' },
     { label: 'Active Classes',  value: dashboard?.totalActiveClasses?.toLocaleString() || '0', icon: <BookOpen size={28} color="#7c3aed" />, iconBg: '#f5f3ff' },
     { label: 'System Activity', value: `${dashboard?.systemActivityPercentage ?? 0}%`,     icon: <Activity size={28} color="#d97706" />, iconBg: '#fffbeb' },

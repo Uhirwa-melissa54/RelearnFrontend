@@ -43,7 +43,7 @@ const DashboardOverview = ({ onNavigate, onSelectData }) => {
   const stats = [
     { label: 'Active Assignments', value: activeAssignments.length,  icon: <Clock size={20} color="#f97316" />,      bgColor: '#fff7ed' },
     { label: 'Overdue',            value: overdueAssignments.length, icon: <AlertCircle size={20} color="#ef4444" />, bgColor: '#fef2f2' },
-    { label: 'Recent Notes',       value: recentNotes.length,        icon: <FileText size={20} color="#1A264A" />,    bgColor: 'var(--secondary-color)' },
+    { label: 'Recent Notes',       value: recentNotes.length,        icon: <FileText size={20} color="#00234b" />,    bgColor: 'var(--secondary-color)' },
   ];
 
   if (loading) return (
@@ -119,7 +119,7 @@ const DashboardOverview = ({ onNavigate, onSelectData }) => {
               <p style={{ color: '#9ca3af', padding: '12px 0' }}>No notes uploaded yet.</p>
             ) : recentNotes.map(note => (
               <div key={note.id} className="list-item note-list-item" onClick={() => { onSelectData('document', note); onNavigate('document'); }}>
-                <FileText size={18} color="#1A264A" className="note-icon" />
+                <FileText size={18} color="#00234b" className="note-icon" />
                 <div className="list-item-main">
                   <h4>{note.title}</h4>
                   <p>{note.courseName} • {new Date(note.createdAt).toLocaleDateString()}</p>

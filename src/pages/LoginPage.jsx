@@ -48,6 +48,7 @@ const LoginPage = () => {
 
         {/* Left Side: Marketing Text */}
         <div className="login-left">
+          <a href="/" className="back-to-home">← Voltar ao início</a>
           <h1 className="marketing-title">RELEARN!</h1>
           <p className="marketing-text">
             A centralized, structured, and hassle-free<br />

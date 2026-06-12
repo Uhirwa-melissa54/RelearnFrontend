@@ -85,7 +85,7 @@ const TeacherAllClassesView = ({ onNavigate, onSelectData }) => {
                 <span className="class-full-name">{cls.academicYear || 'Academic Year'}</span>
               </div>
               <div className="class-subject-icon">
-                <BookOpen size={20} color="#1A264A" />
+                <BookOpen size={20} color="#00234b" />
               </div>
             </div>
 
@@ -102,7 +102,7 @@ const TeacherAllClassesView = ({ onNavigate, onSelectData }) => {
 
             <div className="class-card-footer">
               <span>Manage Class</span>
-              <ChevronRight size={18} color="#1A264A" />
+              <ChevronRight size={18} color="#00234b" />
             </div>
           </div>
         ))}

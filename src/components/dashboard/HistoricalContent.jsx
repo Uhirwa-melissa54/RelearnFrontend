@@ -97,7 +97,7 @@ const HistoricalContent = ({ type, onNavigate, onSelectData }) => {
               {group.items.map(item => (
                 <div key={item.id} className="historical-item" onClick={() => handleItemClick(item)}>
                   <div className="item-main">
-                    <FileText size={20} color="#1A264A" />
+                    <FileText size={20} color="#00234b" />
                     <div className="item-details">
                       <h4>{item.title}</h4>
                       <p>{item.createdAt ? new Date(item.createdAt).toLocaleDateString() : (item.deadline ? new Date(item.deadline).toLocaleDateString() : '—')}</p>

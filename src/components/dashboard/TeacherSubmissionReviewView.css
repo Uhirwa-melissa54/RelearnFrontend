@@ -21,7 +21,7 @@
 }
 
 .btn-back-text:hover {
-  color: #1A264A;
+  color: #00234b;
 }
 
 /* Header */
@@ -40,7 +40,7 @@
 
 .header-title-row h1 {
   font-size: 1.5rem;
-  color: #1A264A;
+  color: #00234b;
   margin: 0;
 }
 
@@ -116,7 +116,7 @@
 .submission-content h2,
 .grading-panel h2 {
   font-size: 1.1rem;
-  color: #1A264A;
+  color: #00234b;
   margin-bottom: 20px;
   padding-bottom: 14px;
   border-bottom: 1px solid #e5e7eb;
@@ -226,7 +226,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #1A264A;
+  background-color: #00234b;
   color: white;
   display: flex;
   align-items: center;
@@ -246,7 +246,7 @@
 .grading-form .form-group label {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #1A264A;
+  color: #00234b;
 }
 
 .grading-form textarea {
@@ -263,8 +263,8 @@
 }
 
 .grading-form textarea:focus {
-  border-color: #1A264A;
-  box-shadow: 0 0 0 3px rgba(26, 38, 74, 0.08);
+  border-color: #00234b;
+  box-shadow: 0 0 0 3px rgba(0, 35, 75, 0.08);
 }
 
 .score-input-wrapper {
@@ -282,14 +282,14 @@
   font-weight: 700;
   text-align: center;
   font-family: inherit;
-  color: #1A264A;
+  color: #00234b;
   outline: none;
   transition: border-color 0.2s;
 }
 
 .score-input-wrapper input:focus {
-  border-color: #1A264A;
-  box-shadow: 0 0 0 3px rgba(26, 38, 74, 0.08);
+  border-color: #00234b;
+  box-shadow: 0 0 0 3px rgba(0, 35, 75, 0.08);
 }
 
 .max-score {
@@ -306,7 +306,7 @@
 
 .btn-save-grade {
   width: 100%;
-  background-color: #1A264A;
+  background-color: #00234b;
   border: none;
   padding: 13px 20px;
   border-radius: 8px;
@@ -320,5 +320,5 @@
 }
 
 .btn-save-grade:hover {
-  background-color: #121b36;
+  background-color: #001a38;
 }

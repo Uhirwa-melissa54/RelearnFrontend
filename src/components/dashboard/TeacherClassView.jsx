@@ -103,7 +103,7 @@ const TeacherClassView = ({ onNavigate, onSelectData, data }) => {
       <div className="class-stats-grid">
         <div className="stat-card-slim card-box">
           <div className="slim-stat-header">
-            <FileText size={18} color="#1A264A" />
+            <FileText size={18} color="#00234b" />
             <span>Total Notes</span>
           </div>
           <span className="slim-stat-value">{notes.length}</span>
@@ -155,7 +155,7 @@ const TeacherClassView = ({ onNavigate, onSelectData, data }) => {
               <div key={note.id} className="content-list-item">
                 <div className="item-left">
                   <div className="note-icon-wrap">
-                    <FileText size={20} color="#1A264A" />
+                    <FileText size={20} color="#00234b" />
                   </div>
                   <div>
                     <h4>{note.title}</h4>

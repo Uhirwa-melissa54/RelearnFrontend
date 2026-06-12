@@ -27,6 +27,19 @@
   padding-right: 2rem;
 }
 
+.back-to-home {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  transition: opacity 0.2s ease;
+}
+
+.back-to-home:hover {
+  opacity: 0.75;
+}
+
 .marketing-title {
   font-size: 4.5rem;
   font-weight: 900;

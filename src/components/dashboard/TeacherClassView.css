@@ -20,7 +20,7 @@
 }
 
 .btn-back-text:hover {
-  color: #1A264A;
+  color: #00234b;
 }
 
 .class-header-row {
@@ -33,7 +33,7 @@
 
 .class-header-text h1 {
   font-size: 1.5rem;
-  color: #1A264A;
+  color: #00234b;
   margin-bottom: 4px;
 }
 
@@ -65,7 +65,7 @@
 
 .btn-secondary:hover {
   background-color: var(--bg-offset);
-  border-color: rgba(26, 38, 74, 0.12);
+  border-color: rgba(0, 35, 75, 0.12);
   box-shadow: var(--shadow-sm);
 }
 
@@ -78,7 +78,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background-color: #1A264A;
+  background-color: #00234b;
   border: none;
   padding: 10px 20px;
   border-radius: 8px;
@@ -91,7 +91,7 @@
 }
 
 .btn-primary:hover {
-  background-color: #121b36;
+  background-color: #001a38;
 }
 
 .btn-primary.btn-sm {
@@ -129,7 +129,7 @@
 .slim-stat-value {
   font-size: 2rem;
   font-weight: 600;
-  color: #1A264A;
+  color: #00234b;
 }
 
 .class-content-section {
@@ -145,7 +145,7 @@
 
 .section-title {
   font-size: 1.1rem;
-  color: #1A264A;
+  color: #00234b;
   margin-bottom: 0;
 }
 
@@ -176,7 +176,7 @@
 }
 
 .content-list-item.clickable:hover {
-  border-color: #1A264A;
+  border-color: #00234b;
 }
 
 .item-left {
@@ -198,7 +198,7 @@
 
 .item-left h4 {
   font-size: 1rem;
-  color: #1A264A;
+  color: #00234b;
   margin-bottom: 4px;
 }
 
@@ -258,7 +258,7 @@
 
 .item-right-progress strong {
   font-size: 1rem;
-  color: #1A264A;
+  color: #00234b;
   font-weight: 600;
 }
 
@@ -275,7 +275,7 @@
   border: 1px solid #e5e7eb;
   padding: 6px 14px;
   border-radius: 8px;
-  color: #1A264A;
+  color: #00234b;
   font-weight: 600;
   font-size: 0.85rem;
   cursor: pointer;
