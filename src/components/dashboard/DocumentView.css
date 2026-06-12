@@ -6,7 +6,7 @@
 
 .document-header h1 {
   font-size: 1.5rem;
-  color: #1A264A;
+  color: #00234b;
   margin-bottom: 8px;
 }
 
@@ -36,7 +36,7 @@
 
 .doc-section h3 {
   font-size: 1.05rem;
-  color: #1A264A;
+  color: #00234b;
   margin-bottom: 8px;
 }
 
@@ -100,7 +100,7 @@
 
 .btn-view-online:hover {
   background: var(--bg-offset);
-  border-color: rgba(26, 38, 74, 0.12);
+  border-color: rgba(0, 35, 75, 0.12);
 }
 
 .btn-download {
@@ -124,7 +124,7 @@
 
 .document-preview-card h3 {
   font-size: 1.05rem;
-  color: #1A264A;
+  color: #00234b;
 }
 
 .preview-placeholder {
@@ -136,7 +136,7 @@
 
 .related-notes-card h3 {
   font-size: 1.05rem;
-  color: #1A264A;
+  color: #00234b;
   margin-bottom: 16px;
 }
 
@@ -156,7 +156,7 @@
 }
 
 .related-note-item:hover {
-  border-color: #1A264A;
+  border-color: #00234b;
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.08);
 }
 

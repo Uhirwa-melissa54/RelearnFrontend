@@ -3,7 +3,7 @@ import { Search, UserPlus, Mail, MoreVertical, Edit2, Trash2, Users } from 'luci
 import './AdminManageUsers.css';
 import { adminApi } from '../../api';
 
-const AVATAR_COLORS = ['#1A264A', '#7c3aed', '#0891b2', '#059669', '#d97706', '#dc2626', '#0284c7'];
+const AVATAR_COLORS = ['#00234b', '#7c3aed', '#0891b2', '#059669', '#d97706', '#dc2626', '#0284c7'];
 const getColor    = (name) => AVATAR_COLORS[(name || '').charCodeAt(0) % AVATAR_COLORS.length];
 const getInitials = (name) => (name || '?').split(' ').map(n => n[0]).join('').toUpperCase();
 

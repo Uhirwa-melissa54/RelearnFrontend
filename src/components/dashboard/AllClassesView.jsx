@@ -87,7 +87,7 @@ const AllClassesView = ({ onNavigate, onSelectData }) => {
 
             <div className="class-card-footer">
               <span>View Materials</span>
-              <ChevronRight size={18} color="#1A264A" />
+              <ChevronRight size={18} color="#00234b" />
             </div>
           </div>
         ))}

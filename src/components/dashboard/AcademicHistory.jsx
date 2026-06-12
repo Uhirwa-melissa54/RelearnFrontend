@@ -60,7 +60,7 @@ const AcademicHistory = ({ onNavigate }) => {
 
       <div className="year-selector-card card-box">
         <div className="selector-wrapper">
-          <Calendar size={20} color="#1A264A" />
+          <Calendar size={20} color="#00234b" />
           <label htmlFor="year-select">Select Academic Year:</label>
           <select id="year-select" value={selectedYear}
             onChange={(e) => setSelectedYear(e.target.value)}>
@@ -91,7 +91,7 @@ const AcademicHistory = ({ onNavigate }) => {
 
           <div className="achievements-section card-box">
             <div className="section-title">
-              <Award size={20} color="#1A264A" />
+              <Award size={20} color="#00234b" />
               <h3>Achievements</h3>
             </div>
             <div className="badges-container">

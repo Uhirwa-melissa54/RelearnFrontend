@@ -82,7 +82,7 @@ const ClassView = ({ onSelectData, onNavigate, data }) => {
               <div key={courseName} className="subject-block card-box">
                 <div className="subject-header">
                   <div className="subject-title-row">
-                    <BookOpen size={24} color="#1A264A" />
+                    <BookOpen size={24} color="#00234b" />
                     <h2>{courseName}</h2>
                   </div>
                 </div>

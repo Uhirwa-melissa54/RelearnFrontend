@@ -12,7 +12,7 @@
 
 .header-title-group h1 {
   font-size: 1.5rem;
-  color: #1A264A;
+  color: #00234b;
   margin-bottom: 4px;
 }
 
@@ -101,7 +101,7 @@
 
 .card-title h3 {
   font-size: 1.1rem;
-  color: #1A264A;
+  color: #00234b;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -180,7 +180,7 @@
   border: 1px solid #e5e7eb;
   padding: 8px 16px;
   border-radius: 8px;
-  color: #1A264A;
+  color: #00234b;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;

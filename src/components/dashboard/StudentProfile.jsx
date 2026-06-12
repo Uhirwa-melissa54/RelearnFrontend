@@ -111,7 +111,7 @@ const StudentProfile = () => {
         {/* Security Card */}
         <div className="security-card card-box">
           <div className="section-title">
-            <Shield size={24} color="#1A264A" />
+            <Shield size={24} color="#00234b" />
             <h2>Security Settings</h2>
           </div>
 

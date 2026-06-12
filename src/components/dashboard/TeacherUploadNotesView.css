@@ -22,12 +22,12 @@
 }
 
 .btn-back-text:hover {
-  color: #1A264A;
+  color: #00234b;
 }
 
 .upload-header h1 {
   font-size: 1.5rem;
-  color: #1A264A;
+  color: #00234b;
   margin-bottom: 4px;
 }
 
@@ -65,7 +65,7 @@
 .form-group label {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #1A264A;
+  color: #00234b;
 }
 
 .form-group input[type="text"],
@@ -84,8 +84,8 @@
 
 .form-group input[type="text"]:focus,
 .form-group textarea:focus {
-  border-color: #1A264A;
-  box-shadow: 0 0 0 3px rgba(26, 38, 74, 0.08);
+  border-color: #00234b;
+  box-shadow: 0 0 0 3px rgba(0, 35, 75, 0.08);
 }
 
 .form-row {
@@ -113,8 +113,8 @@
 }
 
 .form-select:focus {
-  border-color: #1A264A;
-  box-shadow: 0 0 0 3px rgba(26, 38, 74, 0.08);
+  border-color: #00234b;
+  box-shadow: 0 0 0 3px rgba(0, 35, 75, 0.08);
 }
 
 /* Dropzone */
@@ -129,7 +129,7 @@
 
 .upload-dropzone:hover,
 .upload-dropzone.drag-over {
-  border-color: #1A264A;
+  border-color: #00234b;
   background-color: #f1f5f9;
 }
 
@@ -250,7 +250,7 @@
 }
 
 .btn-submit {
-  background: #1A264A;
+  background: #00234b;
   border: none;
   padding: 12px 28px;
   border-radius: 8px;
@@ -263,5 +263,5 @@
 }
 
 .btn-submit:hover {
-  background-color: #121b36;
+  background-color: #001a38;
 }

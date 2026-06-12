@@ -8,7 +8,7 @@
 .aau-header h1 {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #1A264A;
+  color: #00234b;
   margin-bottom: 4px;
 }
 
@@ -40,11 +40,11 @@
 }
 
 .role-option:hover {
-  border-color: #1A264A;
+  border-color: #00234b;
 }
 
 .role-option.selected {
-  border-color: #1A264A;
+  border-color: #00234b;
   background-color: #f8faff;
 }
 
@@ -61,7 +61,7 @@
 .role-text strong {
   display: block;
   font-size: 0.95rem;
-  color: #1A264A;
+  color: #00234b;
   font-weight: 600;
   margin-bottom: 3px;
 }
@@ -85,8 +85,8 @@
 }
 
 .role-option.selected .role-check {
-  background-color: #1A264A;
-  border-color: #1A264A;
+  background-color: #00234b;
+  border-color: #00234b;
 }
 
 /* Form card */
@@ -97,7 +97,7 @@
 .aau-form-card h2 {
   font-size: 1.05rem;
   font-weight: 700;
-  color: #1A264A;
+  color: #00234b;
   margin-bottom: 24px;
   padding-bottom: 14px;
   border-bottom: 1px solid #e5e7eb;
@@ -114,7 +114,7 @@
 .form-group label {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #1A264A;
+  color: #00234b;
 }
 
 .form-group input,
@@ -133,8 +133,8 @@
 
 .form-group input:focus,
 .form-group select:focus {
-  border-color: #1A264A;
-  box-shadow: 0 0 0 3px rgba(26, 38, 74, 0.08);
+  border-color: #00234b;
+  box-shadow: 0 0 0 3px rgba(0, 35, 75, 0.08);
 }
 
 .form-row {
@@ -161,7 +161,7 @@
 .teacher-classes-label {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #1A264A;
+  color: #00234b;
   margin-bottom: 12px;
 }
 
@@ -196,7 +196,7 @@
 }
 
 .class-assignment-row select:focus {
-  border-color: #1A264A;
+  border-color: #00234b;
 }
 
 .class-assignment-row .remove-class-btn {
@@ -225,7 +225,7 @@
   border: 1px dashed #cbd5e1;
   padding: 10px 16px;
   border-radius: 8px;
-  color: #1A264A;
+  color: #00234b;
   font-size: 0.88rem;
   font-weight: 600;
   cursor: pointer;
@@ -236,7 +236,7 @@
 }
 
 .btn-add-class-row:hover {
-  border-color: #1A264A;
+  border-color: #00234b;
   background-color: #f8faff;
 }
 
@@ -282,7 +282,7 @@
 }
 
 .btn-save-user {
-  background: #1A264A;
+  background: #00234b;
   border: none;
   padding: 12px 28px;
   border-radius: 8px;
@@ -295,7 +295,7 @@
 }
 
 .btn-save-user:hover {
-  background-color: #121b36;
+  background-color: #001a38;
 }
 
 /* Section divider */

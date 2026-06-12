@@ -21,7 +21,7 @@
 }
 
 .btn-back-text:hover {
-  color: #1A264A;
+  color: #00234b;
 }
 
 /* Header */
@@ -41,7 +41,7 @@
 
 .assignment-details-header h1 {
   font-size: 1.5rem;
-  color: #1A264A;
+  color: #00234b;
   margin-bottom: 4px;
 }
 
@@ -88,7 +88,7 @@
 .ad-stat-value {
   font-size: 2rem;
   font-weight: 700;
-  color: #1A264A;
+  color: #00234b;
   line-height: 1;
 }
 
@@ -108,7 +108,7 @@
 
 .section-title {
   font-size: 1.1rem;
-  color: #1A264A;
+  color: #00234b;
   margin-bottom: 0;
 }
 
@@ -136,13 +136,13 @@
 }
 
 .filter-tab:hover {
-  border-color: #1A264A;
-  color: #1A264A;
+  border-color: #00234b;
+  color: #00234b;
 }
 
 .filter-tab.active {
-  background-color: #1A264A;
-  border-color: #1A264A;
+  background-color: #00234b;
+  border-color: #00234b;
   color: white;
 }
 
@@ -298,12 +298,12 @@
 
 .icon-btn:hover {
   background-color: #f3f4f6;
-  color: #1A264A;
+  color: #00234b;
   border-color: #d1d5db;
 }
 
 .btn-grade {
-  background-color: #1A264A;
+  background-color: #00234b;
   border: none;
   padding: 8px 18px;
   border-radius: 8px;
@@ -316,7 +316,7 @@
 }
 
 .btn-grade:hover {
-  background-color: #121b36;
+  background-color: #001a38;
 }
 
 .btn-regrade {

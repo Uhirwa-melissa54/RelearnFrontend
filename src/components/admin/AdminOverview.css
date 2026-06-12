@@ -6,7 +6,7 @@
 
 .admin-overview-header h1 {
   font-size: 1.6rem;
-  color: #1A264A;
+  color: #00234b;
   margin-bottom: 4px;
   font-weight: 700;
 }
@@ -65,7 +65,7 @@
 .asc-value {
   font-size: 2rem;
   font-weight: 700;
-  color: #1A264A;
+  color: #00234b;
   line-height: 1;
 }
 
@@ -82,7 +82,7 @@
 .admin-section-title {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #1A264A;
+  color: #00234b;
   margin-bottom: 20px;
 }
 
@@ -107,8 +107,8 @@
 }
 
 .qa-card:hover {
-  border-color: #1A264A;
-  box-shadow: 0 4px 16px rgba(26, 38, 74, 0.08);
+  border-color: #00234b;
+  box-shadow: 0 4px 16px rgba(0, 35, 75, 0.08);
   transform: translateY(-2px);
 }
 
@@ -131,7 +131,7 @@
 
 .qa-text strong {
   font-size: 0.95rem;
-  color: #1A264A;
+  color: #00234b;
   font-weight: 600;
 }
 
@@ -169,7 +169,7 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: #1A264A;
+  background-color: #00234b;
   margin-top: 5px;
   flex-shrink: 0;
 }

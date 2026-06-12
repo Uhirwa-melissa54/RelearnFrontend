@@ -191,7 +191,7 @@ const AdminAddUser = ({ onNavigate, data }) => {
       }}>
         <code style={{
           flex: 1, fontSize: '1.1rem', fontWeight: 700, letterSpacing: '2px',
-          color: '#1A264A', userSelect: 'all',
+          color: '#00234b', userSelect: 'all',
         }}>
           {showPassword ? generatedPassword : '•'.repeat(generatedPassword?.length || 12)}
         </code>
@@ -202,7 +202,7 @@ const AdminAddUser = ({ onNavigate, data }) => {
         <button type="button" onClick={handleCopyPassword}
           style={{
             display: 'flex', alignItems: 'center', gap: '6px',
-            background: copied ? '#dcfce7' : '#1A264A',
+            background: copied ? '#dcfce7' : '#00234b',
             border: 'none', color: copied ? '#16a34a' : '#fff',
             padding: '6px 14px', borderRadius: '6px', cursor: 'pointer',
             fontSize: '0.85rem', fontWeight: 600, transition: 'all 0.2s',
@@ -271,7 +271,7 @@ const AdminAddUser = ({ onNavigate, data }) => {
           {!isEditMode && (
             <div className="role-selector">
               {[
-                { type: 'student', label: 'Student', sub: 'Assign to one class',     icon: <Users    size={26} color="#1A264A" />, bg: '#eef2ff' },
+                { type: 'student', label: 'Student', sub: 'Assign to one class',     icon: <Users    size={26} color="#00234b" />, bg: '#eef2ff' },
                 { type: 'teacher', label: 'Teacher', sub: 'Assign multiple classes', icon: <BookOpen size={26} color="#059669" />, bg: '#ecfdf5' },
               ].map(opt => (
                 <button key={opt.type} type="button"

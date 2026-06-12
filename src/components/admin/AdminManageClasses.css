@@ -14,7 +14,7 @@
 .amc-header-text h1 {
   font-size: 1.6rem;
   font-weight: 700;
-  color: #1A264A;
+  color: #00234b;
   margin-bottom: 4px;
 }
 
@@ -27,7 +27,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background-color: #1A264A;
+  background-color: #00234b;
   border: none;
   padding: 11px 22px;
   border-radius: 8px;
@@ -41,7 +41,7 @@
 }
 
 .btn-create-class:hover {
-  background-color: #121b36;
+  background-color: #001a38;
 }
 
 /* Filter bar */
@@ -75,7 +75,7 @@
 }
 
 .amc-filter-select:focus {
-  border-color: #1A264A;
+  border-color: #00234b;
 }
 
 /* Year tabs (sub-filter when a year is selected) */
@@ -100,13 +100,13 @@
 }
 
 .amc-year-tab:hover {
-  border-color: #1A264A;
-  color: #1A264A;
+  border-color: #00234b;
+  color: #00234b;
 }
 
 .amc-year-tab.active {
-  background-color: #1A264A;
-  border-color: #1A264A;
+  background-color: #00234b;
+  border-color: #00234b;
   color: white;
 }
 
@@ -131,8 +131,8 @@
 }
 
 .amc-class-card:hover {
-  border-color: #1A264A;
-  box-shadow: 0 8px 24px rgba(26, 38, 74, 0.08);
+  border-color: #00234b;
+  box-shadow: 0 8px 24px rgba(0, 35, 75, 0.08);
 }
 
 .amc-card-top {
@@ -144,7 +144,7 @@
 .amc-card-id {
   font-size: 1.4rem;
   font-weight: 800;
-  color: #1A264A;
+  color: #00234b;
   line-height: 1;
 }
 
@@ -169,7 +169,7 @@
 
 .amc-card-menu-btn:hover {
   background-color: #f3f4f6;
-  color: #1A264A;
+  color: #00234b;
 }
 
 /* Card stats */
@@ -238,7 +238,7 @@
   padding: 9px 12px;
   border: none;
   border-radius: 8px;
-  background: #1A264A;
+  background: #00234b;
   color: white;
   font-family: inherit;
   font-size: 0.88rem;
@@ -248,7 +248,7 @@
 }
 
 .btn-edit-class:hover {
-  background-color: #121b36;
+  background-color: #001a38;
 }
 
 /* Dropdown */
@@ -283,7 +283,7 @@
 
 .amc-dropdown-item:hover {
   background-color: #f3f4f6;
-  color: #1A264A;
+  color: #00234b;
 }
 
 .amc-dropdown-item.danger {

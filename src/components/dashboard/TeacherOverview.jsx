@@ -81,7 +81,7 @@ const TeacherOverview = ({ onNavigate, onSelectData }) => {
   );
 
   const stats = [
-    { label: 'Classes Assigned',  value: assignedClasses.length, icon: <BookOpen size={24} color="#1A264A" />, bgColor: '#f3f4f6' },
+    { label: 'Classes Assigned',  value: assignedClasses.length, icon: <BookOpen size={24} color="#00234b" />, bgColor: '#f3f4f6' },
     { label: 'Total Assignments', value: totalAssignments,        icon: <FileText size={24} color="#22c55e" />, bgColor: '#f0fdf4' },
     { label: 'Pending Reviews',   value: pendingReviews,          icon: <Clock    size={24} color="#f97316" />, bgColor: '#fff7ed' },
   ];
@@ -134,7 +134,7 @@ const TeacherOverview = ({ onNavigate, onSelectData }) => {
                     <h3>{cls.className}</h3>
                     <p>{cls.academicYear || ''}</p>
                   </div>
-                  <BookOpen size={20} color="#1A264A" />
+                  <BookOpen size={20} color="#00234b" />
                 </div>
                 <div className="class-card-stats">
                   <div className="class-stat-row">

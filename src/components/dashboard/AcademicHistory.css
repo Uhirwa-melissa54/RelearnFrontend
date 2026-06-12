@@ -6,7 +6,7 @@
 
 .history-header h1 {
   font-size: 1.5rem;
-  color: #1A264A;
+  color: #00234b;
   margin-bottom: 4px;
 }
 
@@ -44,7 +44,7 @@
 }
 
 .selector-wrapper select:focus {
-  border-color: #1A264A;
+  border-color: #00234b;
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
 }
 
@@ -84,7 +84,7 @@
 .history-stat-card .stat-value {
   font-size: 2rem;
   font-weight: 600;
-  color: #1A264A;
+  color: #00234b;
   line-height: 1.2;
 }
 
@@ -108,7 +108,7 @@
 
 .section-title h3 {
   font-size: 1.1rem;
-  color: #1A264A;
+  color: #00234b;
 }
 
 .badges-container {
@@ -125,6 +125,6 @@
 }
 
 .badge.primary {
-  background-color: #1A264A;
+  background-color: #00234b;
   color: white;
 }

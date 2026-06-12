@@ -127,7 +127,7 @@ const AssignmentSubmit = ({ data, onNavigate }) => {
         <p>{assignment.description || 'Complete the assignment as instructed. Submit your work before the deadline.'}</p>
         {assignment.fileUrl && (
           <button type="button" onClick={handleDownloadAssignmentFile}
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', marginTop: '12px', color: '#1A264A', fontWeight: 600, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', marginTop: '12px', color: '#00234b', fontWeight: 600, background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
             📎 Download Assignment File
           </button>
         )}
@@ -152,7 +152,7 @@ const AssignmentSubmit = ({ data, onNavigate }) => {
           <p style={{ color: '#6b7280', marginBottom: '8px' }}>Checking your submission status...</p>
         )}
         {!loadingExisting && existingSubmission && (
-          <div style={{ backgroundColor: '#eef2ff', color: '#1A264A', padding: '12px 16px', borderRadius: '8px', marginBottom: '12px', border: '1px solid #c7d2fe', fontWeight: 600 }}>
+          <div style={{ backgroundColor: '#eef2ff', color: '#00234b', padding: '12px 16px', borderRadius: '8px', marginBottom: '12px', border: '1px solid #c7d2fe', fontWeight: 600 }}>
             Status: Submitted {existingSubmission.submittedAt ? `on ${new Date(existingSubmission.submittedAt).toLocaleString()}` : ''}
           </div>
         )}

@@ -101,7 +101,7 @@ const TeacherSubmissionReviewView = ({ onNavigate, data }) => {
           {submission.fileUrl && (
             <div className="attached-file-box">
               <div className="file-info">
-                <div className="file-icon-wrap"><FileText size={22} color="#1A264A" /></div>
+                <div className="file-icon-wrap"><FileText size={22} color="#00234b" /></div>
                 <div>
                   <h4>{normalizeStoredFilename(submission.fileUrl)}</h4>
                   <p>Click to download</p>
@@ -129,7 +129,7 @@ const TeacherSubmissionReviewView = ({ onNavigate, data }) => {
         <div className="grading-panel card-box">
           <h2>Evaluation</h2>
           <div className="student-info-row">
-            <div className="student-avatar-review" style={{ backgroundColor: '#1A264A', color: 'white', width: 40, height: 40, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700 }}>
+            <div className="student-avatar-review" style={{ backgroundColor: '#00234b', color: 'white', width: 40, height: 40, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700 }}>
               {(submission.studentName || `S${submission.studentId}`).charAt(0).toUpperCase()}
             </div>
             <div>
